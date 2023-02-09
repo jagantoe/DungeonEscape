@@ -1,0 +1,20 @@
+{
+  "Id": 1,
+  "CurrentRound": 1,
+  "Active": false,
+  "MapName": "Name",
+  "Players": [
+    {
+      "Id": 1,
+      "Name": "",
+      "Character": 0,
+      "PositionX": 0,
+      "PositionY": 0,
+      "Items": [],
+      "CurrentHealth": 10,
+      "MaxHealth": 10,
+      "Death": 0
+    }
+  ],
+  "GameState": {}
+}
