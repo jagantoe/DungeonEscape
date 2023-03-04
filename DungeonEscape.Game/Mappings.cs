@@ -1,9 +1,4 @@
-﻿using DungeonEscape.Game.StorageDTO;
-using DungeonEscape.Logic;
-using Mapster;
-using System.Numerics;
-
-namespace DungeonEscape.Game;
+﻿namespace DungeonEscape.Game;
 public static class Mappings
 {
 	static Mappings()
@@ -27,9 +22,5 @@ public static class Mappings
 			.NewConfig()
 			.Map(x => x.Position, x => new Vector2(x.PositionX, x.PositionY));
 	}
-
-	public static void Init()
-	{
-
-	}
+	public static void Init() { }
 }

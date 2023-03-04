@@ -14,7 +14,7 @@ public class TokenProvider
 		_key = Encoding.ASCII.GetBytes(key);
 	}
 
-	public string GenerateToken(int userId, int gameId)
+	public string GenerateToken(int gameId, int userId)
 	{
 		var tokenHandler = new JwtSecurityTokenHandler();
 		var tokenDescriptor = new SecurityTokenDescriptor

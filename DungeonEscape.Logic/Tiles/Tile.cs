@@ -1,5 +1,4 @@
 ﻿namespace DungeonEscape.Logic;
-
 public abstract class Tile
 {
     public string Name { get; set; }
@@ -9,30 +8,23 @@ public abstract class Tile
     public bool BlocksVision { get; set; } = false;
     public TileKind TileKind { get; set; } = TileKind.NonWalkable;
 
-    public virtual void OnInteract(TileOptions options, Player player)
+    public Inspection Inspect(bool detailed)
     {
-
+        return new()
+        {
+            Name = Name,
+            Description = detailed ? DetailedDescription : Description
+        };
     }
+}
 
-    public virtual void OnEvent()
-    {
-
-    }
-
-    public virtual void OnEnter(Player player)
-    {
-
-    }
-
-    public virtual string GetDescription(int id, TileOptions options, bool detailed = false)
-    {
-        return Description;
-    }
-
-    public virtual (bool Walkable, bool BlocksVision) GetState(int id, TileOptions options)
-    {
-        return (false, false);
-    }
+public interface IOnEnter
+{
+    ActResult OnEnter(Vector2 pos, Player player, Map map);
+}
+public interface IInteract
+{
+    ActResult Interact(Vector2 pos, Player player, Map map);
 }
 
 public enum TileKind

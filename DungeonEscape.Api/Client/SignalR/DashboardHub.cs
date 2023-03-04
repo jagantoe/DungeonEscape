@@ -8,10 +8,5 @@ namespace DungeonEscape.Api.Client.SignalR;
 public class DashboardHub : Hub
 {
 	private int UserId => Context.User.GetUserId();
-	public override Task OnConnectedAsync()
-	{
-		Groups.AddToGroupAsync(Context.ConnectionId, UserId.ToString());
-
-		return base.OnConnectedAsync();
-	}
+	public override Task OnConnectedAsync() => Groups.AddToGroupAsync(Context.ConnectionId, UserId.ToString());
 }

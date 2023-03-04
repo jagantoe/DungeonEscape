@@ -1,5 +1,6 @@
 ﻿using DungeonEscape.Api.Authentication;
 using DungeonEscape.Api.GameManagement;
+using DungeonEscape.Game;
 using DungeonEscape.Logic;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -25,16 +26,25 @@ public class AdminController : Controller
 		_gameOptions = gameOptions;
 	}
 
+	// Token
 	[HttpGet]
 	[Route("Token")]
-	public async Task<IActionResult> GetTokenAsync(string name, string password, CancellationToken token)
+	public IActionResult GetToken([FromQuery] string adminPassword, [FromQuery] (int gameId, int playerId) value)
 	{
-		//var user = await _context.User.FirstOrDefaultAsync(u => u.Name == name && u.Password == password, token);
-		//if (user == null) return BadRequest();
-		//var userToken = _tokenProvider.GenerateToken(user.Id);
-		return Ok(null);
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var token = _tokenProvider.GenerateToken(value.gameId, value.playerId);
+		return Ok(token);
+	}
+	[HttpGet]
+	[Route("Tokens")]
+	public IActionResult GetTokens([FromQuery] string adminPassword, [FromQuery] List<(int gameId, int playerId)> values)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var results = values.Select(x => new { GameId = x.gameId, PlayerId = x.playerId, Token = _tokenProvider.GenerateToken(x.gameId, x.playerId) });
+		return Ok(results);
 	}
 
+	// Map
 	[HttpGet]
 	public IActionResult GetLoadedMap([FromQuery] string adminPassword)
 	{
@@ -49,13 +59,28 @@ public class AdminController : Controller
 		var result = _dataService.LoadMap(map);
 		return Ok(result);
 	}
+	[HttpPost]
+	public IActionResult LoadMapManual([FromQuery] string adminPassword, [FromBody] List<MapTile> tiles)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var result = _dataService.LoadMapManual(tiles);
+		return Ok(result);
+	}
 
+	// Game
 	[HttpGet]
 	public IActionResult GetGameState([FromQuery] string adminPassword, [FromQuery] int gameId)
 	{
 		if (adminPassword != AdminPassword) return Unauthorized();
 		var game = _dataService.GetGame(gameId);
 		return Ok(game);
+	}
+	[HttpGet]
+	public IActionResult GetGameStorage([FromQuery] string adminPassword, [FromQuery] int gameId)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var game = _dataService.GetGame(gameId);
+		return Ok(game?.GetGameStorage());
 	}
 	[HttpPost]
 	public async Task<IActionResult> LoadGame([FromQuery] string adminPassword, [FromQuery] int gameId)
@@ -72,6 +97,7 @@ public class AdminController : Controller
 		return Ok(result);
 	}
 
+	// Cache
 	[HttpPost]
 	public IActionResult UnloadEverything([FromQuery] string adminPassword)
 	{
@@ -80,6 +106,7 @@ public class AdminController : Controller
 		return Ok();
 	}
 
+	// Options
 	[HttpGet]
 	public IActionResult GetOptions([FromQuery] string adminPassword)
 	{

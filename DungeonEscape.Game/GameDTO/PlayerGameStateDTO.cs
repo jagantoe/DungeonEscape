@@ -1,5 +1,5 @@
 ﻿namespace DungeonEscape.Game.GameDTO;
-public class GameStateDTO
+public sealed class PlayerGameStateDTO
 {
 	public PlayerDTO Player { get; set; }
 	public List<TileDTO> Vision { get; set; }

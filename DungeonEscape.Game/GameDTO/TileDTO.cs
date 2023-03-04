@@ -1,7 +1,7 @@
 ﻿namespace DungeonEscape.Game.GameDTO;
-public class TileDTO
+public sealed class TileDTO
 {
-	public int X { get; set; }
-	public int Y { get; set; }
+	public int PositionX { get; set; }
+	public int PositionY { get; set; }
 	public TileKindDTO TileKind { get; set; }
 }

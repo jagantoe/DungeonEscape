@@ -1,9 +1,7 @@
-﻿using System.Numerics;
-
-namespace DungeonEscape.Logic;
+﻿namespace DungeonEscape.Logic;
 public static class Vision
 {
-	private static List<Vector2> MovementGrid = new List<Vector2>();
+	public static List<Vector2> MovementGrid = new List<Vector2>();
 	private static Dictionary<int, List<Vector2>> VisionGrids = new Dictionary<int, List<Vector2>>();
 
 	static Vision()
@@ -23,6 +21,7 @@ public static class Vision
 		// 2 Range
 		VisionGrids.Add(2, GenerateGrids(2));
 	}
+	public static void Init() { }
 
 	private static List<Vector2> GenerateGrids(int range)
 	{

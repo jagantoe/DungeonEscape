@@ -1,8 +1,13 @@
 ﻿namespace DungeonEscape.Logic.Actions;
-public class ResetAction : PlayerAction
+public sealed class ResetAction : PlayerAction
 {
 	public ResetAction(int playerId) : base(playerId)
 	{
 
+	}
+
+	public override string ToString()
+	{
+		return "Action to reset back to the start";
 	}
 }

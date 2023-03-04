@@ -1,5 +1,4 @@
 ﻿namespace DungeonEscape.Logic;
-
 public sealed class Wall : Tile
 {
 	public Wall()
@@ -18,7 +17,9 @@ public sealed class Wall : Tile
 		Tiles.ConfigTile(TileType.CrackedWall, new CrackedWall());
 		Tiles.ConfigTile(TileType.BrokenWall, new BrokenWall());
 		Tiles.ConfigTile(TileType.IllusionWall, new IllusionWall());
+		Tiles.ConfigTile(TileType.SecretWall, new SecretWall());
 	}
+	public static void Init() { }
 }
 public sealed class CrackedWall : Tile
 {
@@ -50,6 +51,18 @@ public sealed class IllusionWall : Tile
 		Name = "Wall";
 		Description = "It's just a wall";
 		DetailedDescription = "There seems to be a breeze flowing from the wall";
+		Walkable = true;
+		BlocksVision = true;
+		TileKind = TileKind.NonWalkable;
+	}
+}
+public sealed class SecretWall : Tile
+{
+	public SecretWall()
+	{
+		Name = "Wall";
+		Description = "It's just a wall";
+		DetailedDescription = Description;
 		Walkable = true;
 		BlocksVision = true;
 		TileKind = TileKind.NonWalkable;

@@ -1,5 +1,5 @@
 ﻿namespace DungeonEscape.Logic;
-public class PlayerAction
+public abstract class PlayerAction
 {
 	public int PlayerId { get; set; }
 

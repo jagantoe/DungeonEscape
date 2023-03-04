@@ -67,24 +67,29 @@ async Task InspectionResult(Inspection inspection)
 #region Websocket calls
 // Warranty void if code is changed
 
-Task Move(Vector2 target)
+Task Move(int x, int y)
 {
-	return webSocket.InvokeAsync("Move", target);
+	return webSocket.InvokeAsync("Move", x, y);
 }
 
-Task Interact(Vector2 target)
+Task Interact(int x, int y)
 {
-	return webSocket.InvokeAsync("Interact", target);
+	return webSocket.InvokeAsync("Interact", x, y);
 }
 
-Task Inspect(Vector2 target)
+Task Inspect(int x, int y)
 {
-	return webSocket.InvokeAsync("Inspect", target);
+	return webSocket.InvokeAsync("Inspect", x, y);
 }
 
 Task SwitchCharacter(Character character)
 {
 	return webSocket.InvokeAsync("SwitchClass", character);
+}
+
+Task Reset()
+{
+	return webSocket.InvokeAsync("Reset");
 }
 #endregion
 #region Cache calls

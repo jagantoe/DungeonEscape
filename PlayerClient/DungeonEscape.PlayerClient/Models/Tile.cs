@@ -1,8 +1,8 @@
 ﻿namespace DungeonEscape.PlayerClient.Models;
 internal class Tile
 {
-	public int X { get; set; }
-	public int Y { get; set; }
+	public int PositionX { get; set; }
+	public int PositionY { get; set; }
 	public TileKind TileType { get; set; }
 }
 

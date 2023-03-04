@@ -8,12 +8,12 @@
       "Id": 1,
       "Name": "",
       "Character": 0,
-      "PositionX": 0,
-      "PositionY": 0,
+      "PositionX": -1,
+      "PositionY": -1,
       "Items": [],
       "CurrentHealth": 10,
-      "MaxHealth": 10,
-      "Death": 0
+      "Death": 0,
+      "Resets":  0
     }
   ],
   "GameState": {}

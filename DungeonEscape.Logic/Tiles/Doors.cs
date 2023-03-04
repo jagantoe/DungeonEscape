@@ -1,5 +1,4 @@
 ﻿namespace DungeonEscape.Logic;
-
 public abstract class Door : Tile
 {
 	public Item Key { get; set; }
@@ -21,6 +20,7 @@ public abstract class Door : Tile
 		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
 		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
 	}
+	public static void Init() { }
 }
 public sealed class RedDoor : Door
 {

@@ -1,7 +1,5 @@
-﻿using DungeonEscape.Logic;
-
-namespace DungeonEscape.Game.StorageDTO;
-public class GameStorageDTO
+﻿namespace DungeonEscape.Game.StorageDTO;
+public sealed class GameStorageDTO
 {
 	public int Id { get; set; }
 	public bool Active { get; set; }

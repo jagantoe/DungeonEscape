@@ -1,7 +1,7 @@
 ﻿namespace DungeonEscape.Logic;
-public static class DeathQuotes
+public static class Quotes
 {
-	private static List<string> Quotes = new List<string>()
+	private static readonly List<string> DeathQuotes = new()
 	{
 		"Inflated confidence is so easily perforated.",
 		"Death springs just as readily from the ground as life does.",
@@ -16,17 +16,21 @@ public static class DeathQuotes
 		"You are condemned",
 		"There is no escape",
 		"There's no shame in falling down. True shame is to not stand up again!",
-		
-		// Reset quotes
+	};
+	private static readonly List<string> ResetQuotes = new()
+	{
 		"How differently we would live if we knew when to die.",
 		"A simple action yet the consequences can be so dire.",
 		"No judge, no jury, just the executioner.",
 		"Are you a martyr?",
 	};
 
-
-	public static string GetQuote()
+	public static string GetDeathQuote()
 	{
-		return Quotes[Random.Shared.Next(Quotes.Count)];
+		return DeathQuotes[Random.Shared.Next(DeathQuotes.Count)];
+	}
+	public static string GetResetQuote()
+	{
+		return ResetQuotes[Random.Shared.Next(ResetQuotes.Count)];
 	}
 }

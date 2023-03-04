@@ -1,5 +1,4 @@
 ﻿namespace DungeonEscape.Logic;
-
 public abstract class Engraving : Tile
 {
 	public Engraving(string description, string detailedDescription)
@@ -20,6 +19,7 @@ public abstract class Engraving : Tile
 		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
 		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
 	}
+	public static void Init() { }
 }
 public sealed class Puzzle1 : Engraving
 {

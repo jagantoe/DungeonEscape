@@ -1,9 +1,4 @@
-﻿using DungeonEscape.Logic;
-using Mapster;
-using System.Numerics;
-using System.Text.Json;
-
-namespace DungeonEscape.Game;
+﻿namespace DungeonEscape.Game;
 public static class MapLoader
 {
 	public static Dictionary<Vector2, TileType> LoadMap(string map)

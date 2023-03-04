@@ -1,7 +1,5 @@
-﻿using DungeonEscape.Logic;
-
-namespace DungeonEscape.Game.GameDTO;
-public class PlayerDTO
+﻿namespace DungeonEscape.Game.GameDTO;
+public sealed class PlayerDTO
 {
 	public string Name { get; set; }
 	public PlayerCharacter Character { get; set; }
@@ -13,4 +11,5 @@ public class PlayerDTO
 	public int CurrentHealth { get; set; }
 	public int MaxHealth { get; set; }
 	public int Deaths { get; set; }
+	public int Resets { get; set; }
 }

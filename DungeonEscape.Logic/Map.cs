@@ -1,15 +1,14 @@
-﻿using System.Numerics;
-
-namespace DungeonEscape.Logic;
+﻿namespace DungeonEscape.Logic;
 public sealed class Map
 {
 	public Dictionary<Vector2, TileType> LoadedMap { get; set; }
 	public Dictionary<Vector2, TileType?> MapState { get; set; }
-
+	public Vector2 Start { get; set; }
 	public Map(Dictionary<Vector2, TileType> map, Dictionary<Vector2, TileType?> mapState)
 	{
 		LoadedMap = map;
 		MapState = mapState;
+		Start = map.FirstOrDefault(x => x.Value == TileType.Start).Key;
 	}
 
 	public Tile this[Vector2 pos]

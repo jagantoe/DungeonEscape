@@ -1,7 +1,5 @@
-﻿using DungeonEscape.Logic;
-
-namespace DungeonEscape.Game.StorageDTO;
-public class PlayerStorageDTO
+﻿namespace DungeonEscape.Game.StorageDTO;
+public sealed class PlayerStorageDTO
 {
 	public int Id { get; set; }
 	public string Name { get; set; }
@@ -12,6 +10,6 @@ public class PlayerStorageDTO
 	public List<string> Items { get; set; }
 
 	public int CurrentHealth { get; set; }
-	public int MaxHealth { get; set; }
 	public int Deaths { get; set; }
+	public int Resets { get; set; }
 }

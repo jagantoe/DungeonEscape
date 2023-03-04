@@ -1,6 +1,8 @@
 using DungeonEscape.Api.Authentication;
 using DungeonEscape.Api.GameManagement;
 using DungeonEscape.Game;
+
+// Init all static game objects
 Mappings.Init();
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton(new TokenProvider("***secret-key***"));
-builder.Services.AddScoped<DataService>();
-builder.Services.AddScoped<GameService>();
+builder.Services.AddSingleton<DataService>();
+builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<GameOptions>();
 
 var app = builder.Build();
