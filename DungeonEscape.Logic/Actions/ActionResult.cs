@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic.Actions;
+﻿namespace DungeonEscape.Logic;
 public abstract class ActResult
 {
 	public ActionResultType Type { get; set; }
@@ -24,6 +24,15 @@ public sealed class GeneralResult : ActResult
 public sealed class ErrorResult : ActResult
 {
 	public ErrorResult(string result) : base(ActionResultType.Error, result) { }
+
+	public static ErrorResult ConfigMissing(Vector2 pos)
+	{
+		return new ErrorResult($"Config missing for {pos}, contact admin");
+	}
+	public static ErrorResult TargetConfigMissing(Vector2 pos, Vector2 target)
+	{
+		return new ErrorResult($"Target config {target} missing for {pos}, contact admin");
+	}
 }
 public sealed class DeathResult : ActResult
 {

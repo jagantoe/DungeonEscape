@@ -1,7 +1,6 @@
 ﻿using DungeonEscape.Api.Authentication;
 using DungeonEscape.Api.GameManagement;
 using DungeonEscape.Logic;
-using DungeonEscape.Logic.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System.Numerics;

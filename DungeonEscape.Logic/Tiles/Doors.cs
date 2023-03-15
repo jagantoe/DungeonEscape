@@ -1,47 +1,4 @@
 ﻿namespace DungeonEscape.Logic;
-public abstract class Door : Tile
-{
-	public Item Key { get; set; }
-	public Door(string color, Item key)
-	{
-		Name = $"{color} Door";
-		Description = $"A closed {color} door";
-		DetailedDescription = $"Where there is a {color} door there must be a {color} key";
-		Walkable = false;
-		BlocksVision = true;
-		TileKind = TileKind.Interactable;
-		Key = key;
-	}
-	static Door()
-	{
-		Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
-		Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
-		Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
-		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
-		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
-	}
-	public static void Init() { }
-}
-public sealed class RedDoor : Door
-{
-	public RedDoor() : base("Red", Item.Red_Key) { }
-}
-public sealed class BlueDoor : Door
-{
-	public BlueDoor() : base("Blue", Item.Blue_Key) { }
-}
-public sealed class YellowDoor : Door
-{
-	public YellowDoor() : base("Yellow", Item.Yellow_Key) { }
-}
-public sealed class PurpleDoor : Door
-{
-	public PurpleDoor() : base("Purple", Item.Purple_Key) { }
-}
-public sealed class GreenDoor : Door
-{
-	public GreenDoor() : base("Green", Item.Green_Key) { }
-}
 public sealed class OpenDoor : Tile
 {
 	public OpenDoor()
@@ -54,53 +11,70 @@ public sealed class OpenDoor : Tile
 		TileKind = TileKind.Walkable;
 	}
 }
-public abstract class Doorsasdasd : Tile
+public abstract class Door : Tile, IInteract
 {
-	//public string OpenedDescription { get; set; }
-	//public Item Key { get; set; }
+	public Item Key { get; set; }
+	public Door(string color, Item key)
+	{
+		Name = $"{color} Door";
+		Description = $"A closed {color} door";
+		DetailedDescription = $"Where there is a {color} door there must be a {color} key";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.PointOfInterest;
+		Key = key;
+	}
+	static Door()
+	{
+		Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
+		Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
+		Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
+		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
+		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
+	}
+	public static void Init() { }
 
-	//public override bool Walkable { get => Opened; }
-	//public override bool BlocksVision { get => !Opened; }
-
-	//public override void OnInteract(int id, TileOptions options, Player player)
-	//{
-	//	bool? open = options.GetOptions($"{Name}-{id}");
-	//	if (open == true)
-	//	{
-	//		player.AddActionResult(Resources.DOORISOPEN);
-	//	}
-	//	else
-	//	{
-	//		if (player.Items.Contains(Key))
-	//		{
-	//			options.SetOption($"{Name}-{id}", true);
-	//		}
-	//		else
-
-	//		{
-	//			player.AddActionResult("You need some sort of key to open this door");
-	//		}
-	//	}
-	//}
-
-	//public override (bool Walkable, bool BlocksVision) GetState(int id, TileOptions options)
-	//{
-	//	bool? open = options.GetOptions($"{Name}-{id}");
-	//	if (open == true)
-	//	{
-	//		return (true, true);
-	//	}
-	//	return (false, false);
-	//}
-
-	//public override string GetDescription(int id, TileOptions options, bool detailed = false)
-	//{
-	//	bool? open = options.GetOptions($"{Name}-{id}");
-	//	if (open == true)
-	//	{
-	//		return OpenedDescription;
-	//	}
-	//	return Description;
-	//}
+	public ActResult Interact(Vector2 pos, Player player, Map map)
+	{
+		if (player.Items.Contains(Key))
+		{
+			map.ChangeState(pos, TileType.OpenDoor);
+			return new SuccessResult("The door opens");
+		}
+		return new GeneralResult("Nothing happens, best to look for a key");
+	}
 }
+public sealed class RedDoor : Door { public RedDoor() : base("Red", Item.Red_Key) { } }
+public sealed class BlueDoor : Door { public BlueDoor() : base("Blue", Item.Blue_Key) { } }
+public sealed class YellowDoor : Door { public YellowDoor() : base("Yellow", Item.Yellow_Key) { } }
+public sealed class PurpleDoor : Door { public PurpleDoor() : base("Purple", Item.Purple_Key) { } }
+public sealed class GreenDoor : Door { public GreenDoor() : base("Green", Item.Green_Key) { } }
+public sealed class BlackDoor : Door { public BlackDoor() : base("Black", Item.Black_Key) { } }
+public sealed class WhiteDoor : Door { public WhiteDoor() : base("White", Item.White_Key) { } }
+public sealed class StateDoor : Tile, IInteract
+{
+	public StateDoor()
+	{
+		Name = $"A door";
+		Description = $"A closed door with no key hole";
+		DetailedDescription = $"A closed door with no key hole, there must be some mechanism that opens it";
+		Walkable = false;
+		BlocksVision = true;
+		TileKind = TileKind.PointOfInterest;
+	}
 
+	public ActResult Interact(Vector2 pos, Player player, Map map)
+	{
+		var config = map.GetConfig(pos);
+		if (config?.Targets is null || config.Targets.None()) return ErrorResult.ConfigMissing(pos);
+		var target = config.Targets.First();
+		var targetConfig = map.GetConfig(target);
+		if (targetConfig is null) return ErrorResult.TargetConfigMissing(pos, target);
+		if (targetConfig.Active)
+		{
+			map.ChangeState(pos, TileType.OpenDoor);
+			return new SuccessResult("The door opens");
+		}
+		return new GeneralResult("Nothing happens, there must be some way to open it");
+	}
+}

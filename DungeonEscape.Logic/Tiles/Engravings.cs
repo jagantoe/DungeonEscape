@@ -8,16 +8,16 @@ public abstract class Engraving : Tile
 		DetailedDescription = detailedDescription;
 		Walkable = false;
 		BlocksVision = true;
-		TileKind = TileKind.Interactable;
+		TileKind = TileKind.PointOfInterest;
 	}
 
 	static Engraving()
 	{
-		Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
-		Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
-		Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
-		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
-		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
+		//Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
+		//Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
+		//Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
+		//Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
+		//Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
 	}
 	public static void Init() { }
 }
@@ -40,4 +40,8 @@ public sealed class Puzzle4 : Engraving
 public sealed class Puzzle5 : Engraving
 {
 	public Puzzle5() : base("Green", "") { }
+}
+public sealed class End : Engraving
+{
+	public End() : base("Congratulations you have reached the end, thank you for playing, I hope you had fun!", "Congratulations you have reached the end, thank you for playing, I hope you had fun!") { }
 }

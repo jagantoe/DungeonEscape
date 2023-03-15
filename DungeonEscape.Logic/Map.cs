@@ -3,7 +3,9 @@ public sealed class Map
 {
 	public Dictionary<Vector2, TileType> LoadedMap { get; set; }
 	public Dictionary<Vector2, TileType?> MapState { get; set; }
+	public Dictionary<Vector2, TileConfig> MapConfigs { get; set; }
 	public Vector2 Start { get; set; }
+
 	public Map(Dictionary<Vector2, TileType> map, Dictionary<Vector2, TileType?> mapState)
 	{
 		LoadedMap = map;
@@ -24,5 +26,10 @@ public sealed class Map
 	public void ChangeState(Vector2 pos, TileType tile)
 	{
 		MapState[pos] = tile;
+	}
+
+	public TileConfig? GetConfig(Vector2 pos)
+	{
+		return MapConfigs.GetValueOrDefault(pos);
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic.Actions;
+﻿namespace DungeonEscape.Logic;
 public sealed class SwitchCharacterAction : PlayerAction
 {
 	public PlayerCharacter Character { get; set; }

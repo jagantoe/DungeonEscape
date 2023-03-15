@@ -1,4 +1,4 @@
-namespace DungeonEscape.Logic.Actions;
+namespace DungeonEscape.Logic;
 public sealed class InspectAction : PlayerAction
 {
 	public Vector2 Target { get; set; }
@@ -7,7 +7,7 @@ public sealed class InspectAction : PlayerAction
 	{
 		Target = target;
 	}
-	
+
 	public override string ToString()
 	{
 		return $"Action to inspect {Target}";

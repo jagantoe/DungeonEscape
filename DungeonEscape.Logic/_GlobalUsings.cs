@@ -1,2 +1,1 @@
-﻿global using DungeonEscape.Logic.Actions;
-global using System.Numerics;
+﻿global using System.Numerics;

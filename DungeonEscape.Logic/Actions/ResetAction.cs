@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic.Actions;
+﻿namespace DungeonEscape.Logic;
 public sealed class ResetAction : PlayerAction
 {
 	public ResetAction(int playerId) : base(playerId)

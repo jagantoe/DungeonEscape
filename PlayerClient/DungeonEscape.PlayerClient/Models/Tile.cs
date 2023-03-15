@@ -10,5 +10,5 @@ internal enum TileKind
 {
 	Walkable,
 	NonWalkable,
-	Interactable
+	PointOfInterest
 }

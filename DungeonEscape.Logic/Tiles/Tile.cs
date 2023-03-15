@@ -31,5 +31,5 @@ public enum TileKind
 {
     Walkable = 0,
     NonWalkable = 1,
-    Interactable = 2
+    PointOfInterest = 2
 }

@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic.Actions;
+﻿namespace DungeonEscape.Logic;
 public sealed class MoveAction : PlayerAction
 {
 	public Vector2 Target { get; set; }

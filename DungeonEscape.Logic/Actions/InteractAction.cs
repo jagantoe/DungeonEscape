@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic.Actions;
+﻿namespace DungeonEscape.Logic;
 public sealed class InteractAction : PlayerAction
 {
 	public Vector2 Target { get; set; }

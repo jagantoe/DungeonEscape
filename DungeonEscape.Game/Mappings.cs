@@ -22,5 +22,8 @@ public static class Mappings
 			.NewConfig()
 			.Map(x => x.Position, x => new Vector2(x.PositionX, x.PositionY));
 	}
-	public static void Init() { }
+	public static void Init()
+	{
+		Initializer.Init();
+	}
 }

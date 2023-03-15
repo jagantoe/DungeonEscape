@@ -1,14 +1,17 @@
 ﻿namespace DungeonEscape.Logic;
-public abstract class Trap : Tile
+public abstract class Trap : Tile, IOnEnter
 {
 	static Trap()
 	{
 		Tiles.ConfigTile(TileType.Spikes, new Wall());
-		Tiles.ConfigTile(TileType.Pit, new CrackedWall());
 		Tiles.ConfigTile(TileType.FirePlate, new BrokenWall());
+		Tiles.ConfigTile(TileType.Pit, new CrackedWall());
 		Tiles.ConfigTile(TileType.FalseFloor, new FalseFloor());
+		Tiles.ConfigTile(TileType.FireWall, new FireWall());
 	}
 	public static void Init() { }
+
+	public abstract ActResult OnEnter(Vector2 pos, Player player, Map map);
 }
 public sealed class Spikes : Trap
 {
@@ -21,17 +24,11 @@ public sealed class Spikes : Trap
 		BlocksVision = true;
 		TileKind = TileKind.Walkable;
 	}
-}
-public sealed class Pit : Trap
-{
-	public Pit()
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
-		Name = "Pit";
-		Description = "A bottomless pit";
-		DetailedDescription = "A bottomless pit and yet death waits below";
-		Walkable = false;
-		BlocksVision = true;
-		TileKind = TileKind.Walkable;
+		player.CurrentHealth -= 1;
+		return new GeneralResult("Where there was a floor there is none now");
 	}
 }
 public sealed class FirePlate : Trap
@@ -45,6 +42,30 @@ public sealed class FirePlate : Trap
 		BlocksVision = false;
 		TileKind = TileKind.Walkable;
 	}
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth -= 2;
+		return new GeneralResult("Where there was a floor there is none now");
+	}
+}
+public sealed class Pit : Trap
+{
+	public Pit()
+	{
+		Name = "Pit";
+		Description = "A bottomless pit";
+		DetailedDescription = "A bottomless pit and yet death waits below";
+		Walkable = false;
+		BlocksVision = true;
+		TileKind = TileKind.Walkable;
+	}
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth = 0;
+		return new GeneralResult("Where there was a floor there is none now");
+	}
 }
 public sealed class FalseFloor : Trap
 {
@@ -56,5 +77,29 @@ public sealed class FalseFloor : Trap
 		Walkable = true;
 		BlocksVision = false;
 		TileKind = TileKind.Walkable;
+	}
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth = 0;
+		return new GeneralResult("Where there was a floor there is none now");
+	}
+}
+public sealed class FireWall : Tile, IInteract
+{
+	public FireWall()
+	{
+		Name = "Wall";
+		Description = "A wall with a round hole";
+		DetailedDescription = "A wall with a round hole, it's covered in soot";
+		Walkable = false;
+		BlocksVision = true;
+		TileKind = TileKind.PointOfInterest;
+	}
+
+	public ActResult Interact(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth -= 5;
+		return new GeneralResult("A burst of fire erupts from the hole");
 	}
 }

@@ -6,4 +6,8 @@ public static class UtilExtensions
 		type = obj as TType;
 		return type != null;
 	}
+	public static bool None<T>(this IEnumerable<T> enumerable)
+	{
+		return !enumerable.Any();
+	}
 }

@@ -4,10 +4,10 @@ public sealed class Start : Tile
 	public Start()
 	{
 		Name = "Start";
-		Description = "A flat floor";
-		DetailedDescription = "";
+		Description = "The start of the game";
+		DetailedDescription = "The start of the game";
 		Walkable = true;
 		BlocksVision = false;
-		TileKind = TileKind.Interactable;
+		TileKind = TileKind.PointOfInterest;
 	}
 }

@@ -26,6 +26,14 @@ public class Player
 		return health;
 	}
 
+	public int GetVisionRange()
+	{
+		var vision = Character == PlayerCharacter.Explorer ? 2 : 1;
+		if (Items.Contains(Item.Lantern)) vision++;
+
+		return vision;
+	}
+
 	public void Revive(Vector2 start)
 	{
 		Deaths += 1;

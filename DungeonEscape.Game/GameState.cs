@@ -81,20 +81,32 @@ public class GameState
 
 			void Move(Vector2 target)
 			{
+				if (player.Position == target)
+				{
+					actionResults.Enqueue(new GeneralResult("Already standing on target"));
+					return;
+				}
 				if (Vision.MovementGrid.Select(x => player.Position).Contains(target))
 				{
-					player.Position = target;
 					var targetTile = Map[target];
-					actionResults.Enqueue(new SuccessResult($"Moved to {target}"));
-					if (targetTile.IsType<IOnEnter>(out var tile))
+					if (targetTile.Walkable)
 					{
-						var results = tile.OnEnter(player, Map);
-						actionResults.Enqueue(results);
+						player.Position = target;
+						actionResults.Enqueue(new SuccessResult($"Moved to {target}"));
+						if (targetTile.IsType<IOnEnter>(out var tile))
+						{
+							var result = tile.OnEnter(target, player, Map);
+							actionResults.Enqueue(result);
+						}
+					}
+					else
+					{
+						actionResults.Enqueue(new GeneralResult("Tile is not walkable"));
 					}
 				}
 				else
 				{
-					actionResults.Enqueue(new ErrorResult("Target is not in range."));
+					actionResults.Enqueue(new ErrorResult("Target is not in range"));
 				}
 			}
 			void Inspect(Vector2 target)
@@ -108,7 +120,7 @@ public class GameState
 				}
 				else
 				{
-					actionResults.Enqueue(new ErrorResult("Target is not in range."));
+					actionResults.Enqueue(new ErrorResult("Target is not in range"));
 				}
 			}
 			void Interact(Vector2 target)
@@ -118,16 +130,17 @@ public class GameState
 					var targetTile = Map[target];
 					if (targetTile.IsType<IInteract>(out var tile))
 					{
-						tile.Interact(target, player, Map);
+						var result = tile.Interact(target, player, Map);
+						actionResults.Enqueue(result);
 					}
 					else
 					{
-						actionResults.Enqueue(new GeneralResult("Action to interact with {target}"));
+						actionResults.Enqueue(new GeneralResult("Nothing happens"));
 					}
 				}
 				else
 				{
-					actionResults.Enqueue(new ErrorResult("Target is not in range."));
+					actionResults.Enqueue(new ErrorResult("Target is not in range"));
 				}
 			}
 			void SwitchCharacter(PlayerCharacter character)
@@ -140,7 +153,7 @@ public class GameState
 				}
 				else
 				{
-					actionResults.Enqueue(new ErrorResult("You can only switch characters while on the start tile!"));
+					actionResults.Enqueue(new ErrorResult("You can only switch characters while on the start tile"));
 				}
 			}
 			void Reset()
@@ -149,11 +162,6 @@ public class GameState
 				actionResults.Enqueue(new DeathResult(Quotes.GetResetQuote()));
 			}
 		}
-
-		// Interaction check
-		var player1 = Players[0];
-		var target1 = new Vector2();
-
 		Processing = false;
 	}
 
@@ -170,10 +178,9 @@ public class GameState
 			int size;
 			var tile = Map[player.Position];
 			if (tile.BlocksVision) size = 0;
-			else if (player.Character == PlayerCharacter.Explorer) size = 2;
-			else size = 1;
+			else size = player.GetVisionRange();
 
-			var vision = Vision.GetVisionGrid(size).Select(x => new { PositionX = x.X, PositionY = x.Y, TileKind = Map[x]! }).Adapt<List<TileDTO>>();
+			var vision = Vision.GetVisionGrid(size).Select(x => new { PositionX = x.X, PositionY = x.Y, TileKind = Map[x] }).Adapt<List<TileDTO>>();
 			return new PlayerGameStateDTO
 			{
 				Player = player.Adapt<PlayerDTO>(),
