@@ -1,4 +1,5 @@
 using DungeonEscape.Api.Authentication;
+using DungeonEscape.Api.Client.SignalR;
 using DungeonEscape.Api.GameManagement;
 using DungeonEscape.Game;
 
@@ -33,5 +34,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<GameHub>("/hub/Game");
+app.MapHub<DashboardHub>("/hub/Dashboard");
 
 app.Run();
