@@ -1,6 +1,7 @@
 ﻿namespace DungeonEscape.Game.GameDTO;
 public sealed class PlayerActionResultDTO
 {
+	public int Round { get; set; }
 	public int PlayerId { get; set; }
 	public IEnumerable<ActResult> ActionResults { get; set; }
 }

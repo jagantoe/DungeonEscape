@@ -77,7 +77,7 @@ public class GameState
 				actionResults.Enqueue(new DeathResult(Quotes.GetDeathQuote()));
 			}
 			// Add action results 
-			PlayerActionResults.Add(new PlayerActionResultDTO { PlayerId = player.Id, ActionResults = actionResults });
+			PlayerActionResults.Add(new PlayerActionResultDTO { Round = CurrentRound, PlayerId = player.Id, ActionResults = actionResults });
 
 			void Move(Vector2 target)
 			{
