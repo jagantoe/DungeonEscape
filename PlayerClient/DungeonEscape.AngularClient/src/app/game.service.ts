@@ -24,7 +24,7 @@ export class GameService {
     this.addListeners();
   }
 
-  public connect() {
+  private connect() {
     try {
       this.hubConnection.start().catch();
     } catch (error) {
@@ -40,5 +40,21 @@ export class GameService {
     this.hubConnection.on("Inspect", (inspection: Inspection) => {
       this.inspectionSubject.next(inspection);
     });
+  }
+
+  public move(x: number, y: number) {
+    this.hubConnection.invoke("Move", x, y);
+  }
+  public interact(x: number, y: number) {
+    this.hubConnection.invoke("Interact", x, y);
+  }
+  public inspect(x: number, y: number) {
+    this.hubConnection.invoke("Inspect", x, y);
+  }
+  public switchCharacter(character: Character) {
+    this.hubConnection.invoke("SwitchClass", character);
+  }
+  public reset() {
+    this.hubConnection.invoke("Reset");
   }
 }
