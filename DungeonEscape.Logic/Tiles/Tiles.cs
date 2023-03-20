@@ -65,6 +65,7 @@ public static class Tiles
 	public static void Init()
 	{
 		Console.WriteLine("here asdasd asd asd asd ");
+		Start.Init();
 		Chest.Init();
 		Door.Init();
 		Engraving.Init();

@@ -16,5 +16,6 @@
       "Resets":  0
     }
   ],
-  "GameState": {}
+  "GameState": {},
+  "GameConfig": {}
 }

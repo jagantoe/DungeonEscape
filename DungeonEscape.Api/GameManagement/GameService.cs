@@ -3,6 +3,7 @@ using DungeonEscape.Logic;
 
 namespace DungeonEscape.Api.GameManagement;
 
+public record GameResult(IEnumerable<PlayerGameStateDTO> PlayerStates, IEnumerable<PlayerActionResultDTO> PlayerActions, IEnumerable<PlayerInspection> PlayerInspections);
 public class GameService
 {
 	private readonly DataService _dataService;
@@ -11,15 +12,15 @@ public class GameService
 		_dataService = dataService;
 	}
 
-	public IEnumerable<PlayerActionResultDTO> ProcessGames()
+	public GameResult ProcessGames()
 	{
-		var games = _dataService.GetGames();
+		// Get all games and filter for active
+		var games = _dataService.GetGames().Where(x => x.Active);
 		foreach (var game in games)
 		{
-			if (game.Active is false) continue;
 			game.ResolvePlayerActions();
 		}
-		return games.SelectMany(x => x.GetPlayerActionResults());
+		return new GameResult(games.SelectMany(x => x.GetPlayerGameStates()), games.SelectMany(x => x.GetPlayerActionResults()), games.SelectMany(x => x.GetInspections()));
 	}
 
 	public void AddAction(int gameId, PlayerAction action)

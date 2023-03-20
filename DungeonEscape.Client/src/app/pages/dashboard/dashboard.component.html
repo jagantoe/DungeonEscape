@@ -1,0 +1,17 @@
+<div class="w-full h-full flex justify-center align-content-center">
+    <div class="w-1/3 h-full overflow-auto absolute flex items-center">
+        <div class="h-3/4 w-full flex flex-col gap-3 snap-y snap-mandatory overflow-auto">
+            <div *ngFor="let action of actions" class="grid grid-cols-6 snap-start h-1/6">
+                <div class="col-span-6 border-2 rounded-l rounded-tr border-blue-500">
+                    some normal text
+                </div>
+                <div
+                    class="col-start-2 col-span-5 divide-y-2 divide-dashed divide-blue-300 border-2 border-t-0 rounded-b border-blue-500">
+                    <div>01</div>
+                    <div>02</div>
+                    <div>03</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

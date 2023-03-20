@@ -1,6 +1,7 @@
 ﻿namespace DungeonEscape.Game.GameDTO;
 public sealed class PlayerDTO
 {
+	public string Id { get; set; }
 	public string Name { get; set; }
 	public PlayerCharacter Character { get; set; }
 	public int PositionX { get; set; }

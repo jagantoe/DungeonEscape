@@ -11,7 +11,7 @@ namespace DungeonEscape.Api.Client.Controllers;
 [Route("api/[controller]/[action]")]
 public class AdminController : Controller
 {
-	private static readonly string AdminPassword = "*** secret admin password***";
+	private readonly string AdminPassword = Secret.Code;
 
 	private readonly TokenProvider _tokenProvider;
 	private readonly DataService _dataService;
@@ -27,20 +27,21 @@ public class AdminController : Controller
 	}
 
 	// Token
-	[HttpGet]
+	public record TokenRequest(string name, int gameId, int playerId);
+	[HttpPost]
 	[Route("Token")]
-	public IActionResult GetToken([FromQuery] string adminPassword, [FromQuery] (int gameId, int playerId) value)
+	public IActionResult CreateToken([FromQuery] string adminPassword, [FromBody] TokenRequest value)
 	{
 		if (adminPassword != AdminPassword) return Unauthorized();
 		var token = _tokenProvider.GenerateToken(value.gameId, value.playerId);
 		return Ok(token);
 	}
-	[HttpGet]
+	[HttpPost]
 	[Route("Tokens")]
-	public IActionResult GetTokens([FromQuery] string adminPassword, [FromQuery] List<(int gameId, int playerId)> values)
+	public IActionResult CreateTokens([FromQuery] string adminPassword, [FromBody] List<TokenRequest> values)
 	{
 		if (adminPassword != AdminPassword) return Unauthorized();
-		var results = values.Select(x => new { GameId = x.gameId, PlayerId = x.playerId, Token = _tokenProvider.GenerateToken(x.gameId, x.playerId) });
+		var results = values.Select(x => new { Name = x.name, GameId = x.gameId, PlayerId = x.playerId, Token = _tokenProvider.GenerateToken(x.gameId, x.playerId) });
 		return Ok(results);
 	}
 
@@ -69,13 +70,6 @@ public class AdminController : Controller
 
 	// Game
 	[HttpGet]
-	public IActionResult GetGameState([FromQuery] string adminPassword, [FromQuery] int gameId)
-	{
-		if (adminPassword != AdminPassword) return Unauthorized();
-		var game = _dataService.GetGame(gameId);
-		return Ok(game);
-	}
-	[HttpGet]
 	public IActionResult GetGameStorage([FromQuery] string adminPassword, [FromQuery] int gameId)
 	{
 		if (adminPassword != AdminPassword) return Unauthorized();
@@ -95,6 +89,14 @@ public class AdminController : Controller
 		if (adminPassword != AdminPassword) return Unauthorized();
 		var result = _dataService.UnloadGame(gameId);
 		return Ok(result);
+	}
+	[HttpPost]
+	public IActionResult SetGameActive([FromQuery] string adminPassword, [FromQuery] int gameId, [FromQuery] bool active)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var game = _dataService.GetGame(gameId);
+		if (game is not null) game.Active = active;
+		return Ok(game?.Active);
 	}
 
 	// Cache

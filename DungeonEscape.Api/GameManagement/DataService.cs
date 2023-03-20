@@ -1,8 +1,11 @@
 ﻿using DungeonEscape.Game;
+using DungeonEscape.Game.StorageDTO;
 using DungeonEscape.Logic;
+using GitHubGistStorage;
 using Mapster;
 using Microsoft.Extensions.Caching.Memory;
 using System.Numerics;
+using System.Text.Json;
 
 namespace DungeonEscape.Api.GameManagement;
 
@@ -15,10 +18,12 @@ public class DataService
 	private static string GAME_CACHE = "Game-";
 
 	private readonly IMemoryCache _memoryCache;
+	private readonly IGistClient _gistClient;
 
-	public DataService(IMemoryCache memoryCache)
+	public DataService(IMemoryCache memoryCache, IGistClient gistClient)
 	{
 		_memoryCache = memoryCache;
+		_gistClient = gistClient;
 	}
 
 	public void UnloadEverything()
@@ -80,15 +85,15 @@ public class DataService
 	{
 		var map = GetLoadedMap();
 		if (map == null) return "Map is not loaded";
-		var currentGame = _memoryCache.GetValueOrDefault<Dictionary<Vector2, TileType>>(GAME_CACHE + id);
-		if (currentGame != null) return "This game is already loaded please clear it before reloading it";
+		var currentGame = GetGame(id);
+		if (currentGame is not null) return "This game is already loaded please clear it before reloading it";
 		var game = await LoadGameStateFromStorage(id);
 		if (game is null) return "Game not found";
 		if (game.MapName != map) return "The game you are trying to load does not match the loaded map";
 		if (game.Players.Count == 0) return "Game has no players";
 		else if (game.Players.DistinctBy(x => x.Id).Count() != game.Players.Count) return "Duplicate player id found";
 		_memoryCache.Set(GAME_CACHE + id, game);
-		_memoryCache.Set(GAMES_CACHE, GetLoadedGames().Add(id));
+		GetLoadedGames().Add(id);
 		return "Game loaded successfully";
 	}
 	public string UnloadGame(int id)
@@ -113,7 +118,14 @@ public class DataService
 
 	private async Task<GameState> LoadGameStateFromStorage(int id)
 	{
-		// Load game
-		return null;
+		var storageId = $"DungeonEscape-{id}";
+		var dictionary = await _gistClient.GetGistDictionary();
+		var storedGame = dictionary.GetValueOrDefault(storageId);
+		if (storedGame is null) return null;
+		var gameStorage = JsonSerializer.Deserialize<GameStorageDTO>(storedGame);
+		if (gameStorage is null) return null;
+		var map = GetMap();
+		var gameState = new GameState(map, gameStorage);
+		return gameState;
 	}
 }

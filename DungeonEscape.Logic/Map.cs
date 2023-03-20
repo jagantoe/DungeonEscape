@@ -6,11 +6,12 @@ public sealed class Map
 	public Dictionary<Vector2, TileConfig> MapConfigs { get; set; }
 	public Vector2 Start { get; set; }
 
-	public Map(Dictionary<Vector2, TileType> map, Dictionary<Vector2, TileType?> mapState)
+	public Map(Dictionary<Vector2, TileType> map, Dictionary<Vector2, TileType?> mapState, Dictionary<Vector2, TileConfig> mapConfigs)
 	{
 		LoadedMap = map;
 		MapState = mapState;
 		Start = map.FirstOrDefault(x => x.Value == TileType.Start).Key;
+		MapConfigs = mapConfigs;
 	}
 
 	public Tile this[Vector2 pos]

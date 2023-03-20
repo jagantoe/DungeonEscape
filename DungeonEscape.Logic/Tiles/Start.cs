@@ -10,4 +10,10 @@ public sealed class Start : Tile
 		BlocksVision = false;
 		TileKind = TileKind.PointOfInterest;
 	}
+
+	static Start()
+	{
+		Tiles.ConfigTile(TileType.Start, new Start());
+	}
+	public static void Init() { }
 }

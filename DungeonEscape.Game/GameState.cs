@@ -21,7 +21,15 @@ public class GameState
 		CurrentRound = gameStorage.CurrentRound;
 		MapName = gameStorage.MapName;
 		Players = gameStorage.Players.Adapt<List<Player>>();
-		Map = new Map(map, gameStorage.Adapt<Dictionary<Vector2, TileType?>>());
+		Map = new Map(map, gameStorage.GameState.Adapt<Dictionary<Vector2, TileType?>>(), gameStorage.GameConfig.Adapt<Dictionary<Vector2, TileConfig>>());
+		PlayerPositionCheck();
+		void PlayerPositionCheck()
+		{
+			foreach (var player in Players)
+			{
+				if (!map.ContainsKey(player.Position)) player.Position = Map.Start;
+			}
+		}
 	}
 
 	private void RoundReset()
@@ -177,10 +185,11 @@ public class GameState
 		{
 			int size;
 			var tile = Map[player.Position];
+			if (tile is null) player.Position = Map.Start;
 			if (tile.BlocksVision) size = 0;
 			else size = player.GetVisionRange();
 
-			var vision = Vision.GetVisionGrid(size).Select(x => new { PositionX = x.X, PositionY = x.Y, TileKind = Map[x] }).Adapt<List<TileDTO>>();
+			var vision = Vision.GetVision(Map, size, player.Position).Adapt<List<TileDTO>>();
 			return new PlayerGameStateDTO
 			{
 				Player = player.Adapt<PlayerDTO>(),
@@ -213,14 +222,15 @@ public class GameState
 
 	public GameStorageDTO GetGameStorage()
 	{
-		return new()
+		return new GameStorageDTO()
 		{
 			Id = Id,
 			Active = Active,
 			CurrentRound = CurrentRound,
 			MapName = MapName,
 			Players = Players.Adapt<List<PlayerStorageDTO>>(),
-			GameState = Map.MapState.Adapt<Dictionary<string, TileType>>()
+			GameState = Map.MapState.Adapt<Dictionary<string, TileType>>(),
+			GameConfig = Map.MapConfigs.Adapt<Dictionary<string, TileConfigDTO>>()
 		};
 	}
 }

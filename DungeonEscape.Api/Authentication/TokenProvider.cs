@@ -1,7 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 
 namespace DungeonEscape.Api.Authentication;
 
@@ -9,9 +8,9 @@ public class TokenProvider
 {
 	private readonly byte[] _key;
 
-	public TokenProvider(string key)
+	public TokenProvider(byte[] key)
 	{
-		_key = Encoding.ASCII.GetBytes(key);
+		_key = key;
 	}
 
 	public string GenerateToken(int gameId, int userId)
