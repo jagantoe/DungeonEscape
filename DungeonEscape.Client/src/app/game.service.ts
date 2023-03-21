@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HubConnection, HubConnectionBuilder, IHttpConnectionOptions } from '@microsoft/signalr';
-import { Observable, ReplaySubject } from 'rxjs';
+import { HubConnection, HubConnectionBuilder, HubConnectionState, IHttpConnectionOptions } from '@microsoft/signalr';
+import { map, Observable, ReplaySubject, timer } from 'rxjs';
 import { Character } from './types/character';
 import { GameState } from './types/gamestate';
 import { Inspection } from './types/inspection';
@@ -19,23 +19,33 @@ export class GameService {
   private inspectionSubject: ReplaySubject<Inspection> = new ReplaySubject<Inspection>(1);
   inspection$: Observable<Inspection> = this.inspectionSubject.asObservable();
 
+  private token!: string;
+  private options!: IHttpConnectionOptions;
   private hubConnection!: HubConnection;
+  connected$: Observable<boolean> = timer(1000, 5000).pipe(
+    map(x => this.hubConnection?.state == HubConnectionState.Connected)
+  );
 
   public connect(token: string) {
-    let options: IHttpConnectionOptions = {
+    this.token = token;
+    this.options = {
       accessTokenFactory: () => token
     };
-    this.hubConnection = new HubConnectionBuilder()
-      .withUrl("***place app url here***" + '/hub/Game', options)
-      .withAutomaticReconnect()
-      .build();
+
     this.startConnection();
     this.addListeners();
+  }
+  public reconnect() {
+    this.startConnection();
   }
 
   private startConnection() {
     try {
-      this.hubConnection.start().catch();
+      this.hubConnection = new HubConnectionBuilder()
+        .withUrl("https://localhost:7236" + "/hub/Game", this.options)
+        .withAutomaticReconnect()
+        .build();
+      this.hubConnection.start();
     } catch (error) {
       console.log('error while establishing signalr connection: ' + error);
     }

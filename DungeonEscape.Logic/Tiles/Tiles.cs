@@ -6,6 +6,9 @@ public enum TileType
 	IceFloor = 1,
 	SmokeFloor = 2,
 	Teleporter = 3,
+	PressurePlate = 4,
+	PressurePlateReseter = 5,
+	PressurePlateChecker = 6,
 
 	//Start
 	Start = 10,
@@ -36,6 +39,8 @@ public enum TileType
 	YellowDoor = 94,
 	PurpleDoor = 95,
 	BlackDoor = 96,
+	WhiteDoor = 97,
+	StateDoor = 98,
 
 	// Chests
 	OpenChest = 100,

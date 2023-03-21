@@ -3,9 +3,9 @@ public abstract class Trap : Tile, IOnEnter
 {
 	static Trap()
 	{
-		Tiles.ConfigTile(TileType.Spikes, new Wall());
-		Tiles.ConfigTile(TileType.FirePlate, new BrokenWall());
-		Tiles.ConfigTile(TileType.Pit, new CrackedWall());
+		Tiles.ConfigTile(TileType.Spikes, new Spikes());
+		Tiles.ConfigTile(TileType.FirePlate, new FirePlate());
+		Tiles.ConfigTile(TileType.Pit, new Pit());
 		Tiles.ConfigTile(TileType.FalseFloor, new FalseFloor());
 		Tiles.ConfigTile(TileType.FireWall, new FireWall());
 	}
@@ -20,8 +20,8 @@ public sealed class Spikes : Trap
 		Name = "Floor";
 		Description = "A perforated floor";
 		DetailedDescription = "A perforated floor, best to avoid it lest you also wish to be perforated";
-		Walkable = false;
-		BlocksVision = true;
+		Walkable = true;
+		BlocksVision = false;
 		TileKind = TileKind.Walkable;
 	}
 
@@ -56,9 +56,9 @@ public sealed class Pit : Trap
 		Name = "Pit";
 		Description = "A bottomless pit";
 		DetailedDescription = "A bottomless pit and yet death waits below";
-		Walkable = false;
+		Walkable = true;
 		BlocksVision = true;
-		TileKind = TileKind.Walkable;
+		TileKind = TileKind.PointOfInterest;
 	}
 
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)

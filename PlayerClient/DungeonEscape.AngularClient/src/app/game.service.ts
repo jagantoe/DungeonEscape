@@ -60,7 +60,7 @@ export class GameService {
     this.hubConnection.invoke("Inspect", x, y);
   }
   public switchCharacter(character: Character) {
-    this.hubConnection.invoke("SwitchClass", character);
+    this.hubConnection.invoke("SwitchCharacter", character);
   }
   public reset() {
     this.hubConnection.invoke("Reset");

@@ -33,7 +33,7 @@ public class GameHub : Hub
 	{
 		_gameService.AddAction(GameId, new InspectAction(UserId, new Vector2(x, y)));
 	}
-	public void SwitchCharacters(PlayerCharacter character)
+	public void SwitchCharacter(PlayerCharacter character)
 	{
 		_gameService.AddAction(GameId, new SwitchCharacterAction(UserId, character));
 	}

@@ -27,6 +27,7 @@ public abstract class Chest : Tile, IInteract
 
 	static Chest()
 	{
+		Tiles.ConfigTile(TileType.OpenChest, new OpenChest());
 		Tiles.ConfigTile(TileType.RedKeyChest, new RedKeyChest());
 		Tiles.ConfigTile(TileType.BlueKeyChest, new BlueKeyChest());
 		Tiles.ConfigTile(TileType.GreenKeyChest, new GreenKeyChest());

@@ -17,6 +17,9 @@ public sealed class Floor : Tile
 		Tiles.ConfigTile(TileType.IceFloor, new IceFloor());
 		Tiles.ConfigTile(TileType.SmokeFloor, new SmokeFloor());
 		Tiles.ConfigTile(TileType.Teleporter, new Teleporter());
+		Tiles.ConfigTile(TileType.PressurePlate, new PressurePlate());
+		Tiles.ConfigTile(TileType.PressurePlateReseter, new PressurePlateReseter());
+		Tiles.ConfigTile(TileType.PressurePlateChecker, new PressurePlateChecker());
 	}
 	public static void Init() { }
 }
@@ -52,8 +55,8 @@ public class Teleporter : Tile, IOnEnter
 		Description = "A flat floor with a sigil of some sort";
 		DetailedDescription = "A flat floor with a ";
 		Walkable = true;
-		BlocksVision = true;
-		TileKind = TileKind.Walkable;
+		BlocksVision = false;
+		TileKind = TileKind.PointOfInterest;
 	}
 
 	public ActResult OnEnter(Vector2 pos, Player player, Map map)

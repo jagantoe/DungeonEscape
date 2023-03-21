@@ -1,27 +1,25 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard.service';
-import { PlayerActionResult } from 'src/app/types/player-action-result';
+import { ActionResultType, PlayerActionResult } from 'src/app/types/player-action-result';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
-  token!: string;
-
   results$: Observable<PlayerActionResult[]>;
+  connected$: Observable<boolean>;
+
+  ActionResultType = ActionResultType;
   constructor(private dashboardService: DashboardService) {
-    this.results$ = dashboardService.results$;
+    this.results$ = dashboardService.results$.pipe();
+    this.connected$ = dashboardService.connected$;
     this.tokenCheck();
-    this.results$.subscribe(x => {
-      console.log(x);
-      console.log(x[x.length - 1]);
-    }
-    )
   }
 
   async tokenCheck() {
@@ -32,7 +30,6 @@ export class DashboardComponent {
     });
 
     if (token) {
-      this.token = token;
       this.dashboardService.connect(token);
     }
     else {
@@ -40,8 +37,8 @@ export class DashboardComponent {
     }
   }
 
-  connect() {
 
+  reconnect() {
+    this.dashboardService.reconnect();
   }
-  actions = [1, 2, 3, 4, 5, 6, 78, 8, 9, 0, 0, 0, 87, 123, 123, 6]
 }

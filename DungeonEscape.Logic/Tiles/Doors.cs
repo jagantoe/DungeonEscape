@@ -26,11 +26,14 @@ public abstract class Door : Tile, IInteract
 	}
 	static Door()
 	{
+		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
 		Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
 		Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
 		Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
 		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
-		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
+		Tiles.ConfigTile(TileType.BlackDoor, new BlackDoor());
+		Tiles.ConfigTile(TileType.WhiteDoor, new WhiteDoor());
+		Tiles.ConfigTile(TileType.StateDoor, new StateDoor());
 	}
 	public static void Init() { }
 

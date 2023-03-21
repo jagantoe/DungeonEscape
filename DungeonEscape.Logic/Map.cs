@@ -19,7 +19,7 @@ public sealed class Map
 		get
 		{
 			TileType? state = MapState.GetValueOrDefault(pos);
-			state ??= LoadedMap[pos];
+			state ??= LoadedMap.GetValueOrDefault(pos);
 			return Tiles.GetTile(state ?? TileType.Wall);
 		}
 	}

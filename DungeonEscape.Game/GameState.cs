@@ -94,7 +94,7 @@ public class GameState
 					actionResults.Enqueue(new GeneralResult("Already standing on target"));
 					return;
 				}
-				if (Vision.MovementGrid.Select(x => player.Position).Contains(target))
+				if (Vision.MovementGrid.Select(x => x + player.Position).Contains(target))
 				{
 					var targetTile = Map[target];
 					if (targetTile.Walkable)
@@ -119,7 +119,7 @@ public class GameState
 			}
 			void Inspect(Vector2 target)
 			{
-				if (Vision.GetVisionGrid(1).Select(x => x * player.Position).Contains(target))
+				if (Vision.GetVisionGrid(1).Select(x => x + player.Position).Contains(target))
 				{
 					var targetTile = Map[target];
 					var inspection = targetTile.Inspect(player.Character == PlayerCharacter.Archeologist);
@@ -133,7 +133,7 @@ public class GameState
 			}
 			void Interact(Vector2 target)
 			{
-				if (Vision.GetVisionGrid(1).Select(x => x * player.Position).Contains(target))
+				if (Vision.GetVisionGrid(1).Select(x => x + player.Position).Contains(target))
 				{
 					var targetTile = Map[target];
 					if (targetTile.IsType<IInteract>(out var tile))
@@ -170,6 +170,7 @@ public class GameState
 				actionResults.Enqueue(new DeathResult(Quotes.GetResetQuote()));
 			}
 		}
+		CurrentRound++;
 		Processing = false;
 	}
 

@@ -1,0 +1,14 @@
+<div *ngIf="!(connected$ | async)"
+    class="fixed w-full h-full top-0 left-0 flex flex-col justify-center items-center bg-gray-600 bg-transparent/75">
+    <h1 class="bg-black/75 rounded-full p-4 animate-bounce">
+        <span
+            class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-amber-500 animate-pulse">
+            NO CONNECTION
+        </span>
+    </h1>
+    <button *ngIf="(reconnectTimer$ | async)"
+        class="bg-black rounded-full mt-5 p-4 text-green-700 hover:text-green-500 transition-colors"
+        (click)="connect()">
+        <span class="text-3xl font-extrabold">RECONNECT</span>
+    </button>
+</div>
