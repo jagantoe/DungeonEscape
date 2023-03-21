@@ -1,3 +1,3 @@
-interface PlayerActionResult {
-
+export interface PlayerActionResult {
+    test: string;
 }

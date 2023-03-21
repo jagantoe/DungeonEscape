@@ -21,7 +21,7 @@ public class TokenProvider
 			Subject = new ClaimsIdentity(new Claim[]
 			{
 						new Claim(ClaimTypes.Name, userId.ToString()),
-						new Claim(ClaimTypes.Country, gameId.ToString()),
+						new Claim(ClaimTypes.Country, gameId.ToString())
 			}),
 			Expires = DateTime.UtcNow.AddDays(1),
 			SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(_key), SecurityAlgorithms.HmacSha512Signature)

@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { HubConnection, HubConnectionBuilder, IHttpConnectionOptions } from '@microsoft/signalr';
 import { Observable, ReplaySubject } from 'rxjs';
+import { Character } from './types/character';
+import { GameState } from './types/gamestate';
+import { Inspection } from './types/inspection';
+import { Player } from './types/player';
+import { Tile } from './types/tile';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +19,21 @@ export class GameService {
   private inspectionSubject: ReplaySubject<Inspection> = new ReplaySubject<Inspection>(1);
   inspection$: Observable<Inspection> = this.inspectionSubject.asObservable();
 
-  private hubConnection: HubConnection = new HubConnectionBuilder()
-    .withUrl("***place app url here***" + '/hub/Game')
-    .withAutomaticReconnect()
-    .build();
+  private hubConnection!: HubConnection;
 
-  constructor() {
-    this.connect();
+  public connect(token: string) {
+    let options: IHttpConnectionOptions = {
+      accessTokenFactory: () => token
+    };
+    this.hubConnection = new HubConnectionBuilder()
+      .withUrl("***place app url here***" + '/hub/Game', options)
+      .withAutomaticReconnect()
+      .build();
+    this.startConnection();
     this.addListeners();
   }
 
-  private connect() {
+  private startConnection() {
     try {
       this.hubConnection.start().catch();
     } catch (error) {

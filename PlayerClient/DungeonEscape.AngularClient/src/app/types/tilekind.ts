@@ -1,4 +1,4 @@
-enum TileKind {
+export enum TileKind {
     Walkable,
     NonWalkable,
     PointOfInterest

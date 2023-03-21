@@ -1,4 +1,4 @@
-enum Character {
+export enum Character {
     StrongMan,
     Explorer,
     Archeologist

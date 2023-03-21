@@ -11,7 +11,7 @@ namespace DungeonEscape.Api.Client.Controllers;
 [Route("api/[controller]/[action]")]
 public class AdminController : Controller
 {
-	private readonly string AdminPassword = Secret.Code;
+	private readonly string AdminPassword = Secret.AdminCode;
 
 	private readonly TokenProvider _tokenProvider;
 	private readonly DataService _dataService;

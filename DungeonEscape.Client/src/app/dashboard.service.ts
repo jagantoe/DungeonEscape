@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { HubConnection, HubConnectionBuilder, IHttpConnectionOptions } from '@microsoft/signalr';
 import { Observable, ReplaySubject, scan } from 'rxjs';
+import { PlayerActionResult } from './types/player-action-result';
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +16,31 @@ export class DashboardService {
     }, [] as PlayerActionResult[])
   );
 
-  private hubConnection: HubConnection = new HubConnectionBuilder()
-    .withUrl("***place app url here***" + '/hub/Game')
-    .withAutomaticReconnect()
-    .build();
+  private hubConnection!: HubConnection;
 
-  constructor() {
-    this.connect();
+  public connect(token: string) {
+    let options: IHttpConnectionOptions = {
+      accessTokenFactory: () => token
+    };
+    this.hubConnection = new HubConnectionBuilder()
+      .withUrl("https://localhost:7236" + "/hub/Dashboard", options)
+      .withAutomaticReconnect()
+      .build();
+    this.startConnection();
     this.addListeners();
   }
 
-  private connect() {
+  private startConnection() {
     try {
-      this.hubConnection.start().catch();
+      this.hubConnection.start();
     } catch (error) {
       console.log('error while establishing signalr connection: ' + error);
     }
   }
 
   private addListeners() {
-    this.hubConnection.on("NewRound", (gameState: GameState) => {
-      this.resultSubject.next(gameState.player);
+    this.hubConnection.on("Game", (actionResult: PlayerActionResult) => {
+      this.resultSubject.next(actionResult);
     });
   }
 }
