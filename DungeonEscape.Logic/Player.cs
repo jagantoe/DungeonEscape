@@ -49,7 +49,7 @@ public class Player
 
 public enum PlayerCharacter
 {
-	StrongMan,
-	Explorer,
-	Archeologist
+	StrongMan = 0,
+	Explorer = 1,
+	Archeologist = 2
 }

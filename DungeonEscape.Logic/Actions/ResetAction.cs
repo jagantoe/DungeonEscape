@@ -8,6 +8,6 @@ public sealed class ResetAction : PlayerAction
 
 	public override string ToString()
 	{
-		return "Action to reset back to the start";
+		return "Reset back to the start";
 	}
 }

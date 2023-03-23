@@ -9,6 +9,6 @@ public sealed class MoveAction : PlayerAction
 	}
 	public override string ToString()
 	{
-		return $"Action to move to {Target}";
+		return $"Move to {Target}";
 	}
 }

@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.selected {
+    @apply ring-4 ring-offset-2 ring-blue-500 border-none #{!important};
+}
+
+.dts-range-start {
+    @apply border-2 border-blue-600 #{!important};
+}

@@ -1,5 +1,5 @@
 export enum Character {
-    StrongMan,
+    Strongman,
     Explorer,
     Archeologist
 }

@@ -124,7 +124,7 @@ public class GameState
 					var targetTile = Map[target];
 					var inspection = targetTile.Inspect(player.Character == PlayerCharacter.Archeologist);
 					PlayerInspections.Add(new PlayerInspection { PlayerId = player.Id, Inspection = inspection });
-					actionResults.Enqueue(new SuccessResult($"Name:{inspection.Name} - Description: {inspection.Description}"));
+					actionResults.Enqueue(new SuccessResult($"Name: {inspection.Name} - Description: {inspection.Description}"));
 				}
 				else
 				{

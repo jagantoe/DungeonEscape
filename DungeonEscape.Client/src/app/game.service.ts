@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder, HubConnectionState, IHttpConnectionOptions } from '@microsoft/signalr';
-import { map, Observable, ReplaySubject, timer } from 'rxjs';
+import { map, Observable, ReplaySubject, shareReplay, timer } from 'rxjs';
 import { Character } from './types/character';
 import { GameState } from './types/gamestate';
 import { Inspection } from './types/inspection';
 import { Player } from './types/player';
-import { Tile } from './types/tile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-  private playerSubject: ReplaySubject<Player> = new ReplaySubject<Player>(1);
-  player$: Observable<Player> = this.playerSubject.asObservable();
-  private visionSubject: ReplaySubject<Tile[]> = new ReplaySubject<Tile[]>(1);
-  vision$: Observable<Tile[]> = this.visionSubject.asObservable();
+  private gameStateSubject: ReplaySubject<GameState> = new ReplaySubject<GameState>(1);
+  gameState$: Observable<GameState> = this.gameStateSubject.asObservable().pipe(
+    shareReplay(1)
+  );
+  player$: Observable<Player> = this.gameState$.pipe(map(x => x.player));
   private inspectionSubject: ReplaySubject<Inspection> = new ReplaySubject<Inspection>(1);
   inspection$: Observable<Inspection> = this.inspectionSubject.asObservable();
 
@@ -53,8 +53,7 @@ export class GameService {
 
   private addListeners() {
     this.hubConnection.on("NewRound", (gameState: GameState) => {
-      this.playerSubject.next(gameState.player);
-      this.visionSubject.next(gameState.visionTiles);
+      this.gameStateSubject.next(gameState);
     });
     this.hubConnection.on("Inspect", (inspection: Inspection) => {
       this.inspectionSubject.next(inspection);
@@ -71,7 +70,7 @@ export class GameService {
     this.hubConnection.invoke("Inspect", x, y);
   }
   public switchCharacter(character: Character) {
-    this.hubConnection.invoke("SwitchClass", character);
+    this.hubConnection.invoke("SwitchCharacter", character);
   }
   public reset() {
     this.hubConnection.invoke("Reset");

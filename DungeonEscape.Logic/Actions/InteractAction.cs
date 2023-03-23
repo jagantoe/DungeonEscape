@@ -9,6 +9,6 @@ public sealed class InteractAction : PlayerAction
 	}
 	public override string ToString()
 	{
-		return $"Action to interact with {Target}";
+		return $"Interact with {Target}";
 	}
 }

@@ -8,6 +8,6 @@ public sealed class SwitchCharacterAction : PlayerAction
 	}
 	public override string ToString()
 	{
-		return $"Action to switch character to {Character}";
+		return $"Switch character to {Character}";
 	}
 }

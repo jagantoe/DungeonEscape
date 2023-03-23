@@ -1,3 +1,44 @@
-<p>game works!</p>
-
+<div class="grid grid-cols-6 h-screen">
+    <dts-select-container class="col-span-4 h-screen p-10 !grid gap-3 grid-cols-7 grid-rows-7"
+        [(selectedItems)]="selectedTiles" [disableDrag]="true" [disableRangeSelection]="true">
+        <div *ngFor="let tile of (vision$ | async)" [dtsSelectItem]="tile"
+            class="rounded border-2 border-dashed grid place-content-center p-3"
+            [ngClass]="[tile.col, tile.row, tile.color]">
+            <span>{{tile.x}},{{tile.y}}</span>
+        </div>
+    </dts-select-container>
+    <div class="col-span-2 col-start-5 grid row-span-6">
+        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg" (click)="inspect()">
+            Inspect (F)
+        </button>
+        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg" (click)="interact()">
+            Interact (I)
+        </button>
+        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+            (click)="switchCharacter(Character.Strongman)">
+            Strongman
+        </button>
+        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+            (click)="switchCharacter(Character.Explorer)">
+            Explorer
+        </button>
+        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+            (click)="switchCharacter(Character.Archeologist)">
+            Archeologist
+        </button>
+        <div class="row-span-4" *ngIf="(player$ | async) as player">
+            <h1>{{player.name}}</h1>
+        </div>
+        <div class="row-start-5 row-span-2">
+            asd
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="actionDebouncer$ | async"></ng-container>
 <loading [connected$]="connected$" (reconnect)="reconnect()"></loading>
+
+<!-- Classes so tailwind can detect them 
+<div
+    class="hidden row-start-1 row-start-2 row-start-3 row-start-4 row-start-5 row-start-6 row-start-7 col-start-1 col-start-2 col-start-3 col-start-4 col-start-5 col-start-6 col-start-7 bg-gray-400 bg-gray-800 bg-green-500  ">
+</div>
+-->

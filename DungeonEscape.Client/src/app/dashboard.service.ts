@@ -11,7 +11,7 @@ export class DashboardService {
   private resultSubject: ReplaySubject<PlayerActionResult> = new ReplaySubject<PlayerActionResult>(1);
   results$: Observable<PlayerActionResult[]> = this.resultSubject.asObservable().pipe(
     scan((acc, cur) => {
-      acc.push(cur);
+      acc.unshift(cur);
       return acc;
     }, [] as PlayerActionResult[]),
     shareReplay(1)

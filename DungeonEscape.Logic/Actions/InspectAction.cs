@@ -10,6 +10,6 @@ public sealed class InspectAction : PlayerAction
 
 	public override string ToString()
 	{
-		return $"Action to inspect {Target}";
+		return $"Inspect {Target}";
 	}
 }

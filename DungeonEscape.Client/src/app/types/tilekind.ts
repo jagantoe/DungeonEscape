@@ -1,5 +1,6 @@
 export enum TileKind {
-    Walkable,
-    NonWalkable,
-    PointOfInterest
+    None = -1,
+    Walkable = 0,
+    NonWalkable = 1,
+    PointOfInterest = 2
 }

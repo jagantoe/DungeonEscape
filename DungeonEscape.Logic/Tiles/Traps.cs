@@ -57,14 +57,14 @@ public sealed class Pit : Trap
 		Description = "A bottomless pit";
 		DetailedDescription = "A bottomless pit and yet death waits below";
 		Walkable = true;
-		BlocksVision = true;
+		BlocksVision = false;
 		TileKind = TileKind.PointOfInterest;
 	}
 
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
 		player.CurrentHealth = 0;
-		return new GeneralResult("Where there was a floor there is none now");
+		return new GeneralResult("You fall to your death");
 	}
 }
 public sealed class FalseFloor : Trap

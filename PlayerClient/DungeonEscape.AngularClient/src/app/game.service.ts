@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder, IHttpConnectionOptions } from '@microsoft/signalr';
-import { Observable, ReplaySubject } from 'rxjs';
+import { map, Observable, ReplaySubject } from 'rxjs';
 import { Character } from './types/character';
 import { GameState } from './types/gamestate';
 import { Inspection } from './types/inspection';
@@ -12,12 +12,12 @@ import { Tile } from './types/tile';
 })
 export class GameService {
 
-  private playerSubject: ReplaySubject<Player> = new ReplaySubject<Player>(1);
-  player$: Observable<Player> = this.playerSubject.asObservable();
-  private visionSubject: ReplaySubject<Tile[]> = new ReplaySubject<Tile[]>(1);
-  vision$: Observable<Tile[]> = this.visionSubject.asObservable();
+  private gameStateSubject: ReplaySubject<GameState> = new ReplaySubject<GameState>(1);
+  public gameState$: Observable<GameState> = this.gameStateSubject.asObservable();
+  public player$: Observable<Player> = this.gameState$.pipe(map(x => x.player));
+  public vision$: Observable<Tile[]> = this.gameState$.pipe(map(x => x.vision));
   private inspectionSubject: ReplaySubject<Inspection> = new ReplaySubject<Inspection>(1);
-  inspection$: Observable<Inspection> = this.inspectionSubject.asObservable();
+  public inspection$: Observable<Inspection> = this.inspectionSubject.asObservable();
 
   private options: IHttpConnectionOptions = {
     accessTokenFactory: () => "*** place token here ***"
@@ -42,8 +42,7 @@ export class GameService {
 
   private addListeners() {
     this.hubConnection.on("NewRound", (gameState: GameState) => {
-      this.playerSubject.next(gameState.player);
-      this.visionSubject.next(gameState.visionTiles);
+      this.gameStateSubject.next(gameState);
     });
     this.hubConnection.on("Inspect", (inspection: Inspection) => {
       this.inspectionSubject.next(inspection);
