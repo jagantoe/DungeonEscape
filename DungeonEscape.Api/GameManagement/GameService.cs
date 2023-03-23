@@ -12,13 +12,17 @@ public class GameService
 		_dataService = dataService;
 	}
 
-	public GameResult ProcessGames()
+	public GameResult ProcessGames(int saveInterval)
 	{
 		// Get all games and filter for active
 		var games = _dataService.GetGames().Where(x => x.Active);
 		foreach (var game in games)
 		{
 			game.ResolvePlayerActions();
+			if (game.CurrentRound % saveInterval == 0)
+			{
+				_dataService.SaveGameStateToStorage(game.GetGameStorage());
+			}
 		}
 		return new GameResult(games.SelectMany(x => x.GetPlayerGameStates()), games.SelectMany(x => x.GetPlayerActionResults()), games.SelectMany(x => x.GetInspections()));
 	}

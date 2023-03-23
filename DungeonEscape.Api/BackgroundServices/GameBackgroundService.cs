@@ -25,17 +25,11 @@ public class GameBackgroundService : BackgroundService
 		{
 			// Default delay
 			Task delay = Task.Delay(10000);
-			var results = _gameService.ProcessGames();
+			var results = _gameService.ProcessGames(_gameOptions.SaveEveryXRounds);
 			// Send out player action results
 			foreach (var result in results.PlayerStates) _ = _hubContext.Clients.Group(result.Player.Id.ToString()).SendAsync("NewRound", result);
 			foreach (var result in results.PlayerInspections) _ = _hubContext.Clients.Group(result.PlayerId.ToString()).SendAsync("Inspect", result);
 			foreach (var result in results.PlayerActions) _ = _dashboardContext.Clients.Group(result.PlayerId.ToString()).SendAsync("Game", result);
-
-			//// Notify players of new state
-			//foreach (var (user, empire) in users)
-			//{
-			//	_ = _hubContext.Clients.Group(user.ToString()).SendAsync("NewDay", empire);
-			//}
 
 			delay = Task.Delay(_gameOptions.DelayBetweenRounds);
 			await delay;

@@ -110,6 +110,12 @@ public class AdminController : Controller
 
 	// Options
 	[HttpGet]
+	public IActionResult GetRateLimit([FromQuery] string adminPassword)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		return Ok(_dataService.GetRateLimit());
+	}
+	[HttpGet]
 	public IActionResult GetOptions([FromQuery] string adminPassword)
 	{
 		if (adminPassword != AdminPassword) return Unauthorized();

@@ -4,6 +4,7 @@ using DungeonEscape.Logic;
 using GitHubGistStorage;
 using Mapster;
 using Microsoft.Extensions.Caching.Memory;
+using Octokit;
 using System.Numerics;
 using System.Text.Json;
 
@@ -127,5 +128,15 @@ public class DataService
 		var map = GetMap();
 		var gameState = new GameState(map, gameStorage);
 		return gameState;
+	}
+	public async Task SaveGameStateToStorage(GameStorageDTO game)
+	{
+		var storageId = $"DungeonEscape-{game.Id}";
+		await _gistClient.UpdateGist(storageId, JsonSerializer.Serialize(game));
+	}
+
+	public RateLimit GetRateLimit()
+	{
+		return _gistClient.GetRateLimit();
 	}
 }
