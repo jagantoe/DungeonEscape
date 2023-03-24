@@ -57,7 +57,7 @@ public sealed class Puzzle3_3 : Engraving { public Puzzle3_3() : base("dwtvfcask
 public sealed class Puzzle4_1 : Engraving { public Puzzle4_1() : base("Two brothers though they share the same blood, their lives could not be more different. One Always did what was right and the other thought only of himself. Good(LEFT) | Bad(RIGHT)") { } }
 public sealed class Puzzle4_2 : Engraving { public Puzzle4_2() : base("When the sickness was spreading. The weak will be culled.(LEFT) | The strong take care of the weak.(RIGHT)") { } }
 public sealed class Puzzle4_3 : Engraving { public Puzzle4_3() : base("When there was not enough food to go around. We stick together and share what we have.(LEFT) | It's everyone for themselves.(RIGHT)") { } }
-public sealed class Puzzle4_4 : Engraving { public Puzzle4_4() : base(". Bad(LEFT) | Good(RIGHT)") { } }
+public sealed class Puzzle4_4 : Engraving { public Puzzle4_4() : base("A local disaster has displaced some farmers. Empty houses are always easy to plunder.(LEFT) | Their problems are our problems, we help any way we can.(RIGHT)") { } }
 public sealed class Puzzle4_5 : Engraving { public Puzzle4_5() : base(". Good(LEFT) | Bad(RIGHT)") { } }
 public sealed class Puzzle4_6 : Engraving { public Puzzle4_6() : base(". Good(LEFT) | Bad(RIGHT)") { } }
 public sealed class Puzzle4_7 : Engraving { public Puzzle4_7() : base(". Bad(LEFT) | Good(RIGHT)") { } }
