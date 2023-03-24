@@ -59,9 +59,9 @@ public sealed class Puzzle4_2 : Engraving { public Puzzle4_2() : base("When the 
 public sealed class Puzzle4_3 : Engraving { public Puzzle4_3() : base("When there was not enough food to go around. We stick together and share what we have.(LEFT) | It's everyone for themselves.(RIGHT)") { } }
 public sealed class Puzzle4_4 : Engraving { public Puzzle4_4() : base("A local disaster has displaced some farmers. Empty houses are always easy to plunder.(LEFT) | Their problems are our problems, we help any way we can.(RIGHT)") { } }
 public sealed class Puzzle4_5 : Engraving { public Puzzle4_5() : base("The local taxes are being increased again. Those are the rules of the land we live by.(LEFT) | Not impacted if you don't pay any taxes.(RIGHT)") { } }
-public sealed class Puzzle4_6 : Engraving { public Puzzle4_6() : base(". Good(LEFT) | Bad(RIGHT)") { } }
-public sealed class Puzzle4_7 : Engraving { public Puzzle4_7() : base(". Bad(LEFT) | Good(RIGHT)") { } }
-public sealed class Puzzle4_8 : Engraving { public Puzzle4_8() : base(". Bad(LEFT) | Good(RIGHT)") { } }
+public sealed class Puzzle4_6 : Engraving { public Puzzle4_6() : base("A war has left the countryside destroyed. It will take a long time to help rebuild this.(LEFT) | People are desperate in war times, they are will to pay anything for help.(RIGHT)") { } }
+public sealed class Puzzle4_7 : Engraving { public Puzzle4_7() : base("You find a dying soldier on the side of the road. He won't be needing his belongings anymore.(LEFT) | Try to offer him some comfort in his dying moments.(RIGHT)") { } }
+public sealed class Puzzle4_8 : Engraving { public Puzzle4_8() : base("A slave has escaped. Return him to his master for a fee.(LEFT) | Help him be on his way.(RIGHT)") { } }
 public sealed class Puzzle4_9 : Engraving { public Puzzle4_9() : base("Follow the same path as your brother did at his 3rd obstacle. (LEFT) | (RIGHT)") { } }
 public sealed class Puzzle4_10 : Engraving { public Puzzle4_10() : base("Follow the opposite path your brother followed at his 4th obstacle. (LEFT) | (RIGHT)") { } }
 public sealed class Puzzle5_1 : Engraving { public Puzzle5_1() : base("6x W | 5x N | 7x E | 2x S", "Total: 6x W | 5x N | 7x E | 2x S") { } }
