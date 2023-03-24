@@ -43,7 +43,7 @@ export class GameService {
   private startConnection() {
     try {
       this.hubConnection = new HubConnectionBuilder()
-        .withUrl("https://localhost:7236" + "/hub/Game", this.options)
+        .withUrl("https://dungeonescape.azurewebsites.net" + "/hub/Game", this.options)
         .withAutomaticReconnect()
         .build();
       this.hubConnection.start();

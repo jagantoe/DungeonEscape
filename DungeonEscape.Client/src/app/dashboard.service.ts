@@ -41,7 +41,7 @@ export class DashboardService {
   private startConnection() {
     try {
       this.hubConnection = new HubConnectionBuilder()
-        .withUrl("https://localhost:7236" + "/hub/Dashboard", this.options)
+        .withUrl("https://dungeonescape.azurewebsites.net" + "/hub/Dashboard", this.options)
         .withAutomaticReconnect()
         .build();
       this.hubConnection.start();
