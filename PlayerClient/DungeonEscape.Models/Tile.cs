@@ -1,14 +1,14 @@
 ﻿namespace DungeonEscape.PlayerClient.Models;
-internal class Tile
+public class Tile
 {
 	public int PositionX { get; set; }
 	public int PositionY { get; set; }
 	public TileKind TileKind { get; set; }
 }
 
-internal enum TileKind
+public enum TileKind
 {
-	Walkable,
-	NonWalkable,
-	PointOfInterest
+	Walkable = 0,
+	NonWalkable = 1,
+	PointOfInterest = 2
 }

@@ -5,14 +5,13 @@ using System.Text.Json;
 
 string hubUri = "https://involvedempire.azurewebsites.net/hub/InvolvedEmpire";
 
-// Use your username + password to retreive a token at https://involvedempire.azurewebsites.net/swagger/index.html#/Admin/Admin_GetToken
 // The tokens are valid for 24h
 var userToken = "";
 
 // Shared Redis Cache for storing and sharing data within your team
 var cacheToken = "";
 
-// ActionLogger: https://kind-hill-0fa661703.1.azurestaticapps.net/
+// ActionLogger: https://black-coast-00bf9be03.2.azurestaticapps.net
 Player player;
 List<Tile> vision;
 
@@ -51,7 +50,6 @@ while (true)
 }
 #endregion
 
-// Write all code here
 // The player and vision variables are auto updated at the start of each round
 // You can make 1 action per round, addition actions will overwrite your previous action
 // Check your action logger for additional details
@@ -84,7 +82,7 @@ Task Inspect(int x, int y)
 
 Task SwitchCharacter(Character character)
 {
-	return webSocket.InvokeAsync("SwitchClass", character);
+	return webSocket.InvokeAsync("SwitchCharacter", character);
 }
 
 Task Reset()

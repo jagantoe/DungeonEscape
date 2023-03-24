@@ -10,6 +10,15 @@ public abstract class Engraving : Tile
 		BlocksVision = true;
 		TileKind = TileKind.PointOfInterest;
 	}
+	public Engraving(string description)
+	{
+		Name = $"Engraving";
+		Description = description;
+		DetailedDescription = description;
+		Walkable = false;
+		BlocksVision = true;
+		TileKind = TileKind.PointOfInterest;
+	}
 
 	static Engraving()
 	{
@@ -45,16 +54,16 @@ public sealed class Puzzle2 : Engraving { public Puzzle2() : base("Seek Light", 
 public sealed class Puzzle3_1 : Engraving { public Puzzle3_1() : base("keigbawhko", "kei gba wh ko") { } }
 public sealed class Puzzle3_2 : Engraving { public Puzzle3_2() : base("rebmaeroxzsf", "reb mae rox zs f") { } }
 public sealed class Puzzle3_3 : Engraving { public Puzzle3_3() : base("dwtvfcaskp", "dw tv f cas kp") { } }
-public sealed class Puzzle4_1 : Engraving { public Puzzle4_1() : base("Purple", "") { } }
-public sealed class Puzzle4_2 : Engraving { public Puzzle4_2() : base("Purple", "") { } }
-public sealed class Puzzle4_3 : Engraving { public Puzzle4_3() : base("Purple", "") { } }
-public sealed class Puzzle4_4 : Engraving { public Puzzle4_4() : base("Purple", "") { } }
-public sealed class Puzzle4_5 : Engraving { public Puzzle4_5() : base("Purple", "") { } }
-public sealed class Puzzle4_6 : Engraving { public Puzzle4_6() : base("Purple", "") { } }
-public sealed class Puzzle4_7 : Engraving { public Puzzle4_7() : base("Purple", "") { } }
-public sealed class Puzzle4_8 : Engraving { public Puzzle4_8() : base("Purple", "") { } }
-public sealed class Puzzle4_9 : Engraving { public Puzzle4_9() : base("Purple", "") { } }
-public sealed class Puzzle4_10 : Engraving { public Puzzle4_10() : base("Purple", "") { } }
+public sealed class Puzzle4_1 : Engraving { public Puzzle4_1() : base("Two brothers though they share the same blood, their lives could not be more different. One Always did what was right and the other thought only of himself. Good(LEFT) | Bad(RIGHT)") { } }
+public sealed class Puzzle4_2 : Engraving { public Puzzle4_2() : base("When the sickness was spreading. The weak will be culled.(LEFT) | The strong take care of the weak.(RIGHT)") { } }
+public sealed class Puzzle4_3 : Engraving { public Puzzle4_3() : base("When there was not enough food to go around. We stick together and share what we have.(LEFT) | It's everyone for themselves.(RIGHT)") { } }
+public sealed class Puzzle4_4 : Engraving { public Puzzle4_4() : base(". Bad(LEFT) | Good(RIGHT)") { } }
+public sealed class Puzzle4_5 : Engraving { public Puzzle4_5() : base(". Good(LEFT) | Bad(RIGHT)") { } }
+public sealed class Puzzle4_6 : Engraving { public Puzzle4_6() : base(". Good(LEFT) | Bad(RIGHT)") { } }
+public sealed class Puzzle4_7 : Engraving { public Puzzle4_7() : base(". Bad(LEFT) | Good(RIGHT)") { } }
+public sealed class Puzzle4_8 : Engraving { public Puzzle4_8() : base(". Bad(LEFT) | Good(RIGHT)") { } }
+public sealed class Puzzle4_9 : Engraving { public Puzzle4_9() : base("Follow the same path as your brother did at his 3rd obstacle. (LEFT) | (RIGHT)") { } }
+public sealed class Puzzle4_10 : Engraving { public Puzzle4_10() : base("Follow the opposite path your brother followed at his 4th obstacle. (LEFT) | (RIGHT)") { } }
 public sealed class Puzzle5_1 : Engraving { public Puzzle5_1() : base("6x W | 5x N | 7x E | 2x S", "Total: 6x W | 5x N | 7x E | 2x S") { } }
 public sealed class Puzzle5_2 : Engraving { public Puzzle5_2() : base("7x W | 6x N | 7x E | 2x S", "Total: 7x W | 6x N | 7x E | 2x S") { } }
 public sealed class Puzzle6_1 : Engraving { public Puzzle6_1() : base("Feel what you cannot see", "Feel what you cannot see") { } }

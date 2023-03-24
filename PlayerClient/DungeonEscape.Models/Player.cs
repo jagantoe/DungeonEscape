@@ -1,5 +1,5 @@
 ﻿namespace DungeonEscape.PlayerClient.Models;
-internal class Player
+public class Player
 {
 	public string Name { get; set; }
 	public Character Character { get; set; }
