@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard.service';
-import { ActionResultType, PlayerActionResult } from 'src/app/types/player-action-result';
+import { PlayerActionResult } from 'src/app/types/player-action-result';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,9 +15,8 @@ export class DashboardComponent {
   results$: Observable<PlayerActionResult[]>;
   connected$: Observable<boolean>;
 
-  ActionResultType = ActionResultType;
   constructor(private dashboardService: DashboardService) {
-    this.results$ = dashboardService.results$.pipe();
+    this.results$ = dashboardService.results$;
     this.connected$ = dashboardService.connected$;
     this.tokenCheck();
   }
@@ -36,7 +35,6 @@ export class DashboardComponent {
       this.tokenCheck();
     }
   }
-
 
   reconnect() {
     this.dashboardService.reconnect();

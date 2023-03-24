@@ -7,30 +7,73 @@
             <span>{{tile.x}},{{tile.y}}</span>
         </div>
     </dts-select-container>
-    <div class="col-span-2 col-start-5 grid row-span-6">
-        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg" (click)="inspect()">
-            Inspect (F)
-        </button>
-        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg" (click)="interact()">
-            Interact (I)
-        </button>
-        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
-            (click)="switchCharacter(Character.Strongman)">
-            Strongman
-        </button>
-        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
-            (click)="switchCharacter(Character.Explorer)">
-            Explorer
-        </button>
-        <button class="rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
-            (click)="switchCharacter(Character.Archeologist)">
-            Archeologist
-        </button>
-        <div class="row-span-4" *ngIf="(player$ | async) as player">
-            <h1>{{player.name}}</h1>
+    <div class="h-screen col-span-2 col-start-5 grid grid-rows-4">
+        <div class="row-span-2 flex flex-col justify-between" *ngIf="(player$ | async) as player">
+            <div class="text-lg p-3">
+                <h1>Name: {{player.name}}</h1>
+                <label for="health">Health: {{player.currentHealth}}/{{player.maxHealth}}</label>
+                <meter id="health" class="w-1/3 pl-2" min="0" [max]="player.maxHealth" [low]="player.maxHealth / 2"
+                    [value]="player.currentHealth">
+                </meter>
+                <h1>Deaths: {{player.deaths}}</h1>
+                <h1>Resets: {{player.resets}}</h1>
+            </div>
+            <div class="text-lg p-3 grid grid-cols-4">
+                <h1 class="col-start-1 col-span-1">Items:</h1>
+                <h1 *ngFor="let item of player.items" class="col-span-1">{{item}}</h1>
+            </div>
+
+            <div>
+                <div class="flex gap-4 text-xl m-4">
+                    <button class="grow rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+                        (click)="inspect()">
+                        Inspect (F)
+                    </button>
+                    <button class="grow rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+                        (click)="interact()">
+                        Interact (I)
+                    </button>
+                    <button class="grow rounded-full bg-blue-300 hover:bg-blue-500 duration-300 shadow-lg"
+                        (click)="reset()">
+                        Reset
+                    </button>
+                </div>
+                <h1 class="text-xl font-bold">Characters:</h1>
+                <div class="flex justify-around text-2xl mb-4">
+                    <button class="rounded-full shadow-lg px-3"
+                        [ngClass]="player.character == Character.Strongman ? 'bg-green-300': 'bg-blue-300'"
+                        (click)="switchCharacter(Character.Strongman)">
+                        Strongman
+                    </button>
+                    <button class="rounded-full shadow-lg px-3"
+                        [ngClass]="player.character == Character.Explorer ? 'bg-green-300': 'bg-blue-300'"
+                        (click)="switchCharacter(Character.Explorer)">
+                        Explorer
+                    </button>
+                    <button class="rounded-full shadow-lg px-3"
+                        [ngClass]="player.character == Character.Archeologist ? 'bg-green-300': 'bg-blue-300'"
+                        (click)="switchCharacter(Character.Archeologist)">
+                        Archeologist
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="row-start-5 row-span-2">
-            asd
+        <div class="row-start-3 row-span-1 overflow-auto" *ngIf="(inspection$ | async) as inspection">
+            <h1 class="text-xl font-bold">Inspection:</h1>
+            <div class="flex flex-col gap-3 snap-y snap-mandatory overflow-auto divide-y-reverse">
+                <div class="grid grid-cols-6 snap-start p-4">
+                    <div class="col-span-2 border-2 border-b-0 rounded-tl rounded-tr border-gray-500 bg-blue-400">
+                        <h1 class="p-2 text-center">{{inspection.name}}</h1>
+                    </div>
+                    <div
+                        class="row-start-2 col-start-1 col-span-6 divide-y-2 divide-dashed divide-white border-2 rounded-b rounded-r border-gray-500 bg-blue-300">
+                        <div class="p-2">{{inspection.description}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-start-4 row-span-1 overflow-auto">
+            <action-list [results$]="results$"></action-list>
         </div>
     </div>
 </div>

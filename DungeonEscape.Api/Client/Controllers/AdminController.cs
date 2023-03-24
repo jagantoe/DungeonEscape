@@ -15,14 +15,12 @@ public class AdminController : Controller
 
 	private readonly TokenProvider _tokenProvider;
 	private readonly DataService _dataService;
-	private readonly GameService _gameService;
 	private readonly GameOptions _gameOptions;
 
-	public AdminController(TokenProvider tokenProvider, DataService dataService, GameService gameService, GameOptions gameOptions)
+	public AdminController(TokenProvider tokenProvider, DataService dataService, GameOptions gameOptions)
 	{
 		_tokenProvider = tokenProvider;
 		_dataService = dataService;
-		_gameService = gameService;
 		_gameOptions = gameOptions;
 	}
 

@@ -19,7 +19,7 @@ public abstract class Door : Tile, IInteract
 		Name = $"{color} Door";
 		Description = $"A closed {color} door";
 		DetailedDescription = $"Where there is a {color} door there must be a {color} key";
-		Walkable = true;
+		Walkable = false;
 		BlocksVision = false;
 		TileKind = TileKind.PointOfInterest;
 		Key = key;
@@ -29,6 +29,7 @@ public abstract class Door : Tile, IInteract
 		Tiles.ConfigTile(TileType.OpenDoor, new OpenDoor());
 		Tiles.ConfigTile(TileType.RedDoor, new RedDoor());
 		Tiles.ConfigTile(TileType.BlueDoor, new BlueDoor());
+		Tiles.ConfigTile(TileType.GreenDoor, new GreenDoor());
 		Tiles.ConfigTile(TileType.YellowDoor, new YellowDoor());
 		Tiles.ConfigTile(TileType.PurpleDoor, new PurpleDoor());
 		Tiles.ConfigTile(TileType.BlackDoor, new BlackDoor());
@@ -58,7 +59,7 @@ public sealed class StateDoor : Tile, IInteract
 {
 	public StateDoor()
 	{
-		Name = $"A door";
+		Name = $"Door";
 		Description = $"A closed door with no key hole";
 		DetailedDescription = $"A closed door with no key hole, there must be some mechanism that opens it";
 		Walkable = false;

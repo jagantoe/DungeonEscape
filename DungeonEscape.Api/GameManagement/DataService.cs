@@ -93,6 +93,7 @@ public class DataService
 		if (game.MapName != map) return "The game you are trying to load does not match the loaded map";
 		if (game.Players.Count == 0) return "Game has no players";
 		else if (game.Players.DistinctBy(x => x.Id).Count() != game.Players.Count) return "Duplicate player id found";
+		game.Active = false;
 		_memoryCache.Set(GAME_CACHE + id, game);
 		GetLoadedGames().Add(id);
 		return "Game loaded successfully";

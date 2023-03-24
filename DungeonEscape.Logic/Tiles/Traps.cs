@@ -28,7 +28,7 @@ public sealed class Spikes : Trap
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
 		player.CurrentHealth -= 1;
-		return new GeneralResult("Where there was a floor there is none now");
+		return new GeneralResult("Spikes shoot out of the ground");
 	}
 }
 public sealed class FirePlate : Trap
@@ -46,7 +46,7 @@ public sealed class FirePlate : Trap
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
 		player.CurrentHealth -= 2;
-		return new GeneralResult("Where there was a floor there is none now");
+		return new GeneralResult("Fire bursts from the ground");
 	}
 }
 public sealed class Pit : Trap

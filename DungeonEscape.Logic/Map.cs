@@ -24,6 +24,13 @@ public sealed class Map
 		}
 	}
 
+	public TileType? GetTileAt(Vector2 pos)
+	{
+		TileType? state = MapState.GetValueOrDefault(pos);
+		state ??= LoadedMap.GetValueOrDefault(pos);
+		return state;
+	}
+
 	public void ChangeState(Vector2 pos, TileType tile)
 	{
 		MapState[pos] = tile;

@@ -3,15 +3,22 @@ public enum TileType
 {
 	// Floors
 	Floor = 0,
-	IceFloor = 1,
 	SmokeFloor = 2,
 	Teleporter = 3,
 	PressurePlate = 4,
 	PressurePlateReseter = 5,
 	PressurePlateChecker = 6,
+	ToggleFloorOn = 7,
+	ToggleFloorOff = 8,
+	FalsePressurePlate = 9,
 
 	//Start
 	Start = 10,
+	ToggleLever = 11,
+	SinglePullLever = 12,
+	TileSwitcherLever = 13,
+	Puzzle2Checker = 14,
+
 
 	// Walls
 	Wall = 20,
@@ -50,7 +57,34 @@ public enum TileType
 	YellowKeyChest = 104,
 	PurpleKeyChest = 105,
 	BlackKeyChest = 106,
-	WhiteKeyChest = 107
+	WhiteKeyChest = 107,
+
+	// Decoration
+	Boulder = 110,
+	Angel = 111,
+
+	// Engravings
+	EndEngraving = 200,
+	Puzzle1 = 201,
+	Puzzle2 = 202,
+	Puzzle3_1 = 203,
+	Puzzle3_2 = 204,
+	Puzzle3_3 = 205,
+	Puzzle4_1 = 206,
+	Puzzle4_2 = 207,
+	Puzzle4_3 = 208,
+	Puzzle4_4 = 209,
+	Puzzle4_5 = 210,
+	Puzzle4_6 = 211,
+	Puzzle4_7 = 212,
+	Puzzle4_8 = 213,
+	Puzzle4_9 = 214,
+	Puzzle4_10 = 215,
+	Puzzle5_1 = 216,
+	Puzzle5_2 = 217,
+	Puzzle6_1 = 218,
+	Puzzle6_2 = 219,
+	Puzzle6_3 = 220
 }
 
 public static class Tiles
@@ -78,5 +112,7 @@ public static class Tiles
 		ItemPickup.Init();
 		Trap.Init();
 		Wall.Init();
+		Lever.Init();
+		Decoration.Init();
 	}
 }

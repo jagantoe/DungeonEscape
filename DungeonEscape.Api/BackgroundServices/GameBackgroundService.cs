@@ -28,7 +28,7 @@ public class GameBackgroundService : BackgroundService
 			var results = _gameService.ProcessGames(_gameOptions.SaveEveryXRounds);
 			// Send out player action results
 			foreach (var result in results.PlayerStates) _ = _hubContext.Clients.Group(result.Player.Id.ToString()).SendAsync("NewRound", result);
-			foreach (var result in results.PlayerInspections) _ = _hubContext.Clients.Group(result.PlayerId.ToString()).SendAsync("Inspect", result);
+			foreach (var result in results.PlayerInspections) _ = _hubContext.Clients.Group(result.PlayerId.ToString()).SendAsync("Inspect", result.Inspection);
 			foreach (var result in results.PlayerActions) _ = _dashboardContext.Clients.Group(result.PlayerId.ToString()).SendAsync("Game", result);
 
 			delay = Task.Delay(_gameOptions.DelayBetweenRounds);

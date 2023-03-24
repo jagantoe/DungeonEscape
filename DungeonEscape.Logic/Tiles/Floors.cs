@@ -14,26 +14,17 @@ public sealed class Floor : Tile
 	static Floor()
 	{
 		Tiles.ConfigTile(TileType.Floor, new Floor());
-		Tiles.ConfigTile(TileType.IceFloor, new IceFloor());
 		Tiles.ConfigTile(TileType.SmokeFloor, new SmokeFloor());
 		Tiles.ConfigTile(TileType.Teleporter, new Teleporter());
 		Tiles.ConfigTile(TileType.PressurePlate, new PressurePlate());
+		Tiles.ConfigTile(TileType.FalsePressurePlate, new FalsePressurePlate());
 		Tiles.ConfigTile(TileType.PressurePlateReseter, new PressurePlateReseter());
 		Tiles.ConfigTile(TileType.PressurePlateChecker, new PressurePlateChecker());
+		Tiles.ConfigTile(TileType.ToggleFloorOn, new ToggleFloorOn());
+		Tiles.ConfigTile(TileType.ToggleFloorOff, new ToggleFloorOff());
+		Tiles.ConfigTile(TileType.Puzzle2Checker, new Puzzle2Checker());
 	}
 	public static void Init() { }
-}
-public sealed class IceFloor : Tile
-{
-	public IceFloor()
-	{
-		Name = "Ice";
-		Description = "A cracked wall";
-		DetailedDescription = "A cracked wall, perhaps with enough strength it can be broken";
-		Walkable = true;
-		BlocksVision = false;
-		TileKind = TileKind.Walkable;
-	}
 }
 public sealed class SmokeFloor : Tile
 {
@@ -88,6 +79,23 @@ public class PressurePlate : Tile, IOnEnter
 		return new GeneralResult("*click*");
 	}
 }
+public class FalsePressurePlate : Tile, IOnEnter
+{
+	public FalsePressurePlate()
+	{
+		Name = "Floor";
+		Description = "Some sort of pressure plate";
+		DetailedDescription = "Some sort of pressure plate";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.Walkable;
+	}
+
+	public ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		return new GeneralResult("*silence*");
+	}
+}
 public class PressurePlateReseter : Tile, IOnEnter
 {
 	public PressurePlateReseter()
@@ -137,5 +145,55 @@ public class PressurePlateChecker : Tile, IOnEnter
 		}
 		config.Active = true;
 		return new SuccessResult("You hear a door unlocking across the room");
+	}
+}
+public class Puzzle2Checker : Tile, IOnEnter
+{
+	public Puzzle2Checker()
+	{
+		Name = "Floor";
+		Description = "Some sort of pressure plate";
+		DetailedDescription = "Some sort of pressure plate";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.Walkable;
+	}
+
+	public ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		var config = map.GetConfig(pos);
+		if (config?.Targets is null || config.Targets.None()) return ErrorResult.ConfigMissing(pos);
+		foreach (var target in config.Targets)
+		{
+			var targetConfig = map.GetTileAt(target);
+			if (targetConfig is null) return ErrorResult.TargetConfigMissing(pos, target);
+			if (targetConfig != TileType.ToggleFloorOn) return new GeneralResult("*silence*");
+		}
+		config.Active = true;
+		return new SuccessResult("You hear a door unlocking across the room");
+	}
+}
+public class ToggleFloorOn : Tile
+{
+	public ToggleFloorOn()
+	{
+		Name = "Tile";
+		Description = "A white tile";
+		DetailedDescription = "A white tile, it seems to give off some light";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.PointOfInterest;
+	}
+}
+public class ToggleFloorOff : Tile
+{
+	public ToggleFloorOff()
+	{
+		Name = "Tile";
+		Description = "A black tile";
+		DetailedDescription = "A black tile, devoid of light";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.Walkable;
 	}
 }

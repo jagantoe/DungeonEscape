@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
-import { debounceTime, distinctUntilChanged, firstValueFrom, map, Observable, Subject, tap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, firstValueFrom, map, Observable, Subject, tap } from 'rxjs';
+import { DashboardService } from 'src/app/dashboard.service';
 import { GameService } from 'src/app/game.service';
 import { Character } from 'src/app/types/character';
 import { DisplayTile } from 'src/app/types/display-tile';
 import { GameState } from 'src/app/types/gamestate';
 import { Inspection } from 'src/app/types/inspection';
 import { Player } from 'src/app/types/player';
+import { PlayerActionResult } from 'src/app/types/player-action-result';
 import { TileKind } from 'src/app/types/tilekind';
 import Swal from 'sweetalert2';
 
@@ -19,19 +21,22 @@ export class GameComponent {
 
   Character = Character;
 
-
   player$: Observable<Player>;
   vision$: Observable<DisplayTile[]>;
   inspection$: Observable<Inspection>;
+  results$: Observable<PlayerActionResult[]>;
   connected$: Observable<boolean>;
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService, private dashboardService: DashboardService) {
     this.player$ = gameService.player$;
     this.vision$ = gameService.gameState$.pipe(
       distinctUntilChanged((a, b) => JSON.stringify(a) == JSON.stringify(b)),
       map(x => this.mapDisplayTiles(x)),
     );
     this.inspection$ = gameService.inspection$;
-    this.connected$ = gameService.connected$;
+    this.results$ = dashboardService.results$;
+    this.connected$ = combineLatest([gameService.connected$, dashboardService.connected$]).pipe(
+      map(([a, b]) => a || b)
+    );
     this.tokenCheck();
   }
 
@@ -69,9 +74,10 @@ export class GameComponent {
       input: 'text',
       showCancelButton: false,
     });
-
+    token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9jb3VudHJ5IjoiMSIsIm5iZiI6MTY3OTYxNjc0MSwiZXhwIjoxNjc5NzAzMTQxLCJpYXQiOjE2Nzk2MTY3NDF9.Q_3Hf0gw7Ri87WKg8qCCaz5_Os7EXLi4iVsLE9kobiZvb12mO5kCnMW9b6WhBX_vyHOoHEJUUSME0nHTF0bSZA";
     if (token) {
       this.gameService.connect(token);
+      this.dashboardService.connect(token);
     }
     else {
       this.tokenCheck();
@@ -80,6 +86,7 @@ export class GameComponent {
 
   reconnect() {
     this.gameService.reconnect();
+    this.dashboardService.reconnect();
   }
 
   selectedTiles: DisplayTile[] = [];
@@ -99,6 +106,9 @@ export class GameComponent {
   }
   switchCharacter(character: Character) {
     this.gameService.switchCharacter(character);
+  }
+  reset() {
+    this.gameService.reset();
   }
   private handle(code: string) {
     console.log(code);
