@@ -18,6 +18,7 @@ public sealed class Wall : Tile
 		Tiles.ConfigTile(TileType.BrokenWall, new BrokenWall());
 		Tiles.ConfigTile(TileType.IllusionWall, new IllusionWall());
 		Tiles.ConfigTile(TileType.SecretWall, new SecretWall());
+		Tiles.ConfigTile(TileType.InvisibleWall, new InvisibleWall());
 	}
 	public static void Init() { }
 }
@@ -77,5 +78,17 @@ public sealed class SecretWall : Tile
 		Walkable = true;
 		BlocksVision = true;
 		TileKind = TileKind.NonWalkable;
+	}
+}
+public sealed class InvisibleWall : Tile
+{
+	public InvisibleWall()
+	{
+		Name = "Floor";
+		Description = "A flat floor";
+		DetailedDescription = Description;
+		Walkable = false;
+		BlocksVision = false;
+		TileKind = TileKind.Walkable;
 	}
 }

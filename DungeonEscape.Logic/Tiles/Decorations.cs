@@ -19,4 +19,4 @@ public abstract class Decoration : Tile
 	public static void Init() { }
 }
 public sealed class Boulder : Decoration { public Boulder() : base("Boulder", "A large boulder") { } }
-public sealed class Angel : Decoration { public Angel() : base("Angel Statue", "A statue of a weeping angel, it ", TileKind.PointOfInterest) { } }
+public sealed class Angel : Decoration { public Angel() : base("Angel Statue", "A statue of a weeping angel", TileKind.PointOfInterest) { } }

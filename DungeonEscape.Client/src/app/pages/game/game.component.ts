@@ -74,7 +74,7 @@ export class GameComponent {
       input: 'text',
       showCancelButton: false,
     });
-    token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9jb3VudHJ5IjoiMSIsIm5iZiI6MTY3OTYxNjc0MSwiZXhwIjoxNjc5NzAzMTQxLCJpYXQiOjE2Nzk2MTY3NDF9.Q_3Hf0gw7Ri87WKg8qCCaz5_Os7EXLi4iVsLE9kobiZvb12mO5kCnMW9b6WhBX_vyHOoHEJUUSME0nHTF0bSZA";
+
     if (token) {
       this.gameService.connect(token);
       this.dashboardService.connect(token);
@@ -111,7 +111,6 @@ export class GameComponent {
     this.gameService.reset();
   }
   private handle(code: string) {
-    console.log(code);
     try {
       switch (code) {
         case "ArrowUp":

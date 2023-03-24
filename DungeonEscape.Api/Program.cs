@@ -74,7 +74,7 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
 {
 	builder
-		.WithOrigins("http://localhost:4200")
+		.WithOrigins("http://localhost:4200", "https://black-coast-00bf9be03.2.azurestaticapps.net")
 		.AllowAnyMethod()
 		.AllowAnyHeader()
 		.AllowCredentials();

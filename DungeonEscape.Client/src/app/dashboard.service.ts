@@ -35,6 +35,7 @@ export class DashboardService {
   }
   public reconnect() {
     this.startConnection();
+    this.addListeners();
   }
 
   private startConnection() {

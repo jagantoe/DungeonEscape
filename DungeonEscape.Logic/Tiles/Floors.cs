@@ -73,6 +73,11 @@ public class PressurePlate : Tile, IOnEnter
 	public ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
 		var config = map.GetConfig(pos);
+		if (config is null)
+		{
+			map.MapConfigs.Add(pos, new TileConfig());
+			config = map.GetConfig(pos);
+		}
 		if (config is null) return ErrorResult.ConfigMissing(pos);
 		if (config.Active) return new GeneralResult("*silence*");
 		config.Active = true;
@@ -115,6 +120,11 @@ public class PressurePlateReseter : Tile, IOnEnter
 		foreach (var target in config.Targets)
 		{
 			var targetConfig = map.GetConfig(target);
+			if (targetConfig is null)
+			{
+				map.MapConfigs.Add(target, new TileConfig());
+				targetConfig = map.GetConfig(target);
+			}
 			if (targetConfig is null) return ErrorResult.TargetConfigMissing(pos, target);
 			targetConfig.Active = false;
 		}
@@ -140,6 +150,11 @@ public class PressurePlateChecker : Tile, IOnEnter
 		foreach (var target in config.Targets)
 		{
 			var targetConfig = map.GetConfig(target);
+			if (targetConfig is null)
+			{
+				map.MapConfigs.Add(target, new TileConfig());
+				targetConfig = map.GetConfig(target);
+			}
 			if (targetConfig is null) return ErrorResult.TargetConfigMissing(pos, target);
 			if (targetConfig.Active == false) return new GeneralResult("*silence*");
 		}

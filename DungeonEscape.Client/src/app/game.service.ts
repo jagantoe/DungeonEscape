@@ -37,6 +37,7 @@ export class GameService {
   }
   public reconnect() {
     this.startConnection();
+    this.addListeners();
   }
 
   private startConnection() {

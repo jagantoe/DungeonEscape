@@ -26,6 +26,7 @@ public enum TileType
 	BrokenWall = 22,
 	IllusionWall = 23,
 	SecretWall = 24,
+	InvisibleWall = 25,
 
 	//Traps
 	Spikes = 30,
