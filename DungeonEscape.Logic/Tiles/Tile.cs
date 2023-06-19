@@ -8,7 +8,7 @@ public abstract class Tile
     public bool BlocksVision { get; set; } = false;
     public TileKind TileKind { get; set; } = TileKind.NonWalkable;
 
-    public Inspection Inspect(bool detailed)
+    public virtual Inspection Inspect(bool detailed, Vector2 pos, Map map)
     {
         return new()
         {
@@ -16,6 +16,10 @@ public abstract class Tile
             Description = detailed ? DetailedDescription : Description
         };
     }
+}
+public abstract class TileWithConfig : Tile
+{
+
 }
 
 public interface IOnEnter
@@ -26,10 +30,15 @@ public interface IInteract
 {
     ActResult Interact(Vector2 pos, Player player, Map map);
 }
+public interface ITurnStart
+{
+    void TurnStart(Vector2 pos, Map map);
+}
 
 public enum TileKind
 {
     Walkable = 0,
     NonWalkable = 1,
-    PointOfInterest = 2
+    PointOfInterest = 2,
+    Danger = 3
 }

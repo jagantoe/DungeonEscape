@@ -7,7 +7,6 @@ public static class Vision
 	private static List<Vector2> Cross = new List<Vector2>();
 	private static Dictionary<int, List<Vector2>> VisionGrids = new Dictionary<int, List<Vector2>>();
 	private static Dictionary<int, List<Vector2>> VisionRings = new Dictionary<int, List<Vector2>>();
-	private static Dictionary<Vector2, List<Vector2>> VisionHidden = new Dictionary<Vector2, List<Vector2>>();
 
 	static Vision()
 	{

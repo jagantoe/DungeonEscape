@@ -55,7 +55,7 @@ public sealed class PurpleDoor : Door { public PurpleDoor() : base("Purple", Ite
 public sealed class GreenDoor : Door { public GreenDoor() : base("Green", Item.Green_Key) { } }
 public sealed class BlackDoor : Door { public BlackDoor() : base("Black", Item.Black_Key) { } }
 public sealed class WhiteDoor : Door { public WhiteDoor() : base("White", Item.White_Key) { } }
-public sealed class StateDoor : Tile, IInteract
+public sealed class StateDoor : TileWithConfig, IInteract
 {
 	public StateDoor()
 	{
@@ -70,8 +70,8 @@ public sealed class StateDoor : Tile, IInteract
 	public ActResult Interact(Vector2 pos, Player player, Map map)
 	{
 		var config = map.GetConfig(pos);
-		if (config?.Targets is null || config.Targets.None()) return ErrorResult.ConfigMissing(pos);
-		var target = config.Targets.First();
+		if (config.MissingConfigTarget()) return ErrorResult.ConfigMissing(pos);
+		var target = config!.FirstTarget();
 		var targetConfig = map.GetConfig(target);
 		if (targetConfig is null) return ErrorResult.TargetConfigMissing(pos, target);
 		if (targetConfig.Active)

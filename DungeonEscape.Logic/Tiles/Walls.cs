@@ -1,10 +1,12 @@
 ﻿namespace DungeonEscape.Logic;
 public sealed class Wall : Tile
 {
+	public static string Name = "Wall";
+	public static string Description = "It's just a wall";
 	public Wall()
 	{
-		Name = "Wall";
-		Description = "It's just a wall";
+		base.Name = Name;
+		base.Description = Description;
 		DetailedDescription = Description;
 		Walkable = false;
 		BlocksVision = true;
@@ -26,7 +28,7 @@ public sealed class CrackedWall : Tile, IInteract
 {
 	public CrackedWall()
 	{
-		Name = "Wall";
+		Name = Wall.Name;
 		Description = "A cracked wall";
 		DetailedDescription = "A cracked wall, perhaps with enough strength it can be broken";
 		Walkable = false;
@@ -36,7 +38,7 @@ public sealed class CrackedWall : Tile, IInteract
 
 	public ActResult Interact(Vector2 pos, Player player, Map map)
 	{
-		if (player.Character == PlayerCharacter.StrongMan || player.Items.Contains(Item.Pickaxe))
+		if (player.Character is PlayerCharacter.StrongMan || player.Items.Contains(Item.Pickaxe))
 		{
 			map.ChangeState(pos, TileType.BrokenWall);
 			return new SuccessResult("You break the wall down, allowing passage");
@@ -60,8 +62,8 @@ public sealed class IllusionWall : Tile
 {
 	public IllusionWall()
 	{
-		Name = "Wall";
-		Description = "It's just a wall";
+		Name = Wall.Name;
+		Description = Wall.Description;
 		DetailedDescription = "There seems to be a breeze flowing from the wall";
 		Walkable = true;
 		BlocksVision = true;
@@ -72,8 +74,8 @@ public sealed class SecretWall : Tile
 {
 	public SecretWall()
 	{
-		Name = "Wall";
-		Description = "It's just a wall";
+		Name = Wall.Name;
+		Description = Wall.Description;
 		DetailedDescription = Description;
 		Walkable = true;
 		BlocksVision = true;
@@ -84,8 +86,8 @@ public sealed class InvisibleWall : Tile
 {
 	public InvisibleWall()
 	{
-		Name = "Floor";
-		Description = "A flat floor";
+		Name = Wall.Name;
+		Description = Wall.Description;
 		DetailedDescription = Description;
 		Walkable = false;
 		BlocksVision = false;

@@ -17,7 +17,7 @@ public sealed class Spikes : Trap
 {
 	public Spikes()
 	{
-		Name = "Floor";
+		Name = Floor.Name;
 		Description = "A perforated floor";
 		DetailedDescription = "A perforated floor, best to avoid it lest you also wish to be perforated";
 		Walkable = true;
@@ -35,7 +35,7 @@ public sealed class FirePlate : Trap
 {
 	public FirePlate()
 	{
-		Name = "Floor";
+		Name = Floor.Name;
 		Description = "A slightly raised floor";
 		DetailedDescription = "A scorching floor, best not stay too long";
 		Walkable = true;
@@ -58,7 +58,7 @@ public sealed class Pit : Trap
 		DetailedDescription = "A bottomless pit and yet death waits below";
 		Walkable = true;
 		BlocksVision = false;
-		TileKind = TileKind.PointOfInterest;
+		TileKind = TileKind.Danger;
 	}
 
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
@@ -71,8 +71,8 @@ public sealed class FalseFloor : Trap
 {
 	public FalseFloor()
 	{
-		Name = "Floor";
-		Description = "A flat floor";
+		Name = Floor.Name;
+		Description = Floor.Description;
 		DetailedDescription = "It LOOKS like a flat floor";
 		Walkable = true;
 		BlocksVision = false;
@@ -89,7 +89,7 @@ public sealed class FireWall : Tile, IInteract
 {
 	public FireWall()
 	{
-		Name = "Wall";
+		Name = Wall.Name;
 		Description = "A wall with a round hole";
 		DetailedDescription = "A wall with a round hole, it's covered in soot";
 		Walkable = false;

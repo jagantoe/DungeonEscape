@@ -29,4 +29,4 @@ public abstract class ItemPickup : Tile, IInteract
 	}
 }
 public sealed class Pickaxe : ItemPickup { public Pickaxe() : base(Item.Pickaxe, "A Pickaxe, should help to break down walls") { } }
-public sealed class Lantern : ItemPickup { public Lantern() : base(Item.Lantern, "A Lantern, should help to break down walls") { } }
+public sealed class Lantern : ItemPickup { public Lantern() : base(Item.Lantern, "A Lantern, should help to see better") { } }

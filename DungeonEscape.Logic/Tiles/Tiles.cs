@@ -1,4 +1,5 @@
 ﻿namespace DungeonEscape.Logic;
+
 public enum TileType
 {
 	// Floors
@@ -17,7 +18,8 @@ public enum TileType
 	ToggleLever = 11,
 	SinglePullLever = 12,
 	TileSwitcherLever = 13,
-	Puzzle2Checker = 14,
+	TileToggleChecker = 14,
+	LeapLedge = 15,
 
 
 	// Walls
@@ -27,6 +29,7 @@ public enum TileType
 	IllusionWall = 23,
 	SecretWall = 24,
 	InvisibleWall = 25,
+	WallCycler = 26,
 
 	//Traps
 	Spikes = 30,
@@ -63,29 +66,12 @@ public enum TileType
 	// Decoration
 	Boulder = 110,
 	Angel = 111,
+	Demon = 112,
+	Vulture = 113,
+	Human = 114,
 
 	// Engravings
-	EndEngraving = 200,
-	Puzzle1 = 201,
-	Puzzle2 = 202,
-	Puzzle3_1 = 203,
-	Puzzle3_2 = 204,
-	Puzzle3_3 = 205,
-	Puzzle4_1 = 206,
-	Puzzle4_2 = 207,
-	Puzzle4_3 = 208,
-	Puzzle4_4 = 209,
-	Puzzle4_5 = 210,
-	Puzzle4_6 = 211,
-	Puzzle4_7 = 212,
-	Puzzle4_8 = 213,
-	Puzzle4_9 = 214,
-	Puzzle4_10 = 215,
-	Puzzle5_1 = 216,
-	Puzzle5_2 = 217,
-	Puzzle6_1 = 218,
-	Puzzle6_2 = 219,
-	Puzzle6_3 = 220
+	Engraving = 200
 }
 
 public static class Tiles
@@ -104,7 +90,6 @@ public static class Tiles
 
 	public static void Init()
 	{
-		Console.WriteLine("here asdasd asd asd asd ");
 		Start.Init();
 		Chest.Init();
 		Door.Init();
@@ -115,5 +100,6 @@ public static class Tiles
 		Wall.Init();
 		Lever.Init();
 		Decoration.Init();
+		Automation.Init();
 	}
 }
