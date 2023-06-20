@@ -17,6 +17,7 @@ public abstract class Lever : TileWithConfig, IInteract
 		Tiles.ConfigTile(TileType.ToggleLever, new ToggleLever());
 		Tiles.ConfigTile(TileType.SinglePullLever, new SinglePullLever());
 		Tiles.ConfigTile(TileType.TileSwitcherLever, new TileSwitcherLever());
+		Tiles.ConfigTile(TileType.CleansingPool, new CleansingPool());
 	}
 	public static void Init() { }
 

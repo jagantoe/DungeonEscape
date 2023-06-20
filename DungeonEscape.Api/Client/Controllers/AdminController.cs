@@ -1,9 +1,11 @@
 ﻿using DungeonEscape.Api.Authentication;
 using DungeonEscape.Api.GameManagement;
 using DungeonEscape.Game;
+using DungeonEscape.Game.StorageDTO;
 using DungeonEscape.Logic;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
 namespace DungeonEscape.Api.Client.Controllers;
 
@@ -23,6 +25,14 @@ public class AdminController : Controller
 		_dataService = dataService;
 		_gameOptions = gameOptions;
 	}
+
+	// General
+	[HttpGet]
+	public object GetEnumJson()
+	{
+		return Enum.GetValues<TileType>().ToDictionary(t => t.ToString(), t => (int)t);
+	}
+
 
 	// Token
 	public record TokenRequest(string name, int gameId, int playerId);
@@ -64,6 +74,19 @@ public class AdminController : Controller
 		if (adminPassword != AdminPassword) return Unauthorized();
 		var result = _dataService.LoadMapManual(tiles);
 		return Ok(result);
+	}
+	[HttpPost]
+	public IActionResult GetLoadedMapCleanConfig([FromQuery] string adminPassword)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var map = _dataService.GetMap();
+		var dict = new Dictionary<Vector2, TileConfig>();
+		foreach (var tile in map)
+		{
+			var isConfig = Tiles.GetTile(tile.Value) is TileWithConfig;
+			if (isConfig) dict.Add(tile.Key, new TileConfig());
+		}
+		return Ok(dict.Adapt<Dictionary<string, TileConfigDTO>>());
 	}
 
 	// Game

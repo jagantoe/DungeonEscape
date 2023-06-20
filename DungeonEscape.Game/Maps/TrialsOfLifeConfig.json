@@ -1,0 +1,1268 @@
+{
+    "32-5": {
+        "targets": [
+            "32-6"
+        ],
+        "active": false,
+        "text": null
+    },
+    "25-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "26-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "27-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "28-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "29-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "30-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "31-6": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-6": {
+        "targets": [
+            "32-9",
+            "31-9",
+            "30-9",
+            "29-9",
+            "29-8",
+            "28-8",
+            "28-9",
+            "28-10",
+            "27-10",
+            "26-10",
+            "25-10",
+            "25-9",
+            "25-8",
+            "26-8",
+            "26-7",
+            "25-7",
+            "25-6",
+            "26-6",
+            "27-6",
+            "28-6",
+            "29-6",
+            "30-6",
+            "31-6",
+            "31-7",
+            "32-7",
+            "33-7",
+            "34-7",
+            "34-6",
+            "33-6"
+        ],
+        "active": false,
+        "text": null
+    },
+    "25-7": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "26-7": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "25-8": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "26-8": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "28-8": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "29-8": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-8": {
+        "targets": null,
+        "active": false,
+        "text": "6xN 10xE 3xS 10xW"
+    },
+    "25-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "28-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "29-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "30-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "31-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-9": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "25-10": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "26-10": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "27-10": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "28-10": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-10": {
+        "targets": [
+            "32-9",
+            "31-9",
+            "30-9",
+            "29-9",
+            "29-8",
+            "28-8",
+            "28-9",
+            "28-10",
+            "27-10",
+            "26-10",
+            "25-10",
+            "25-9",
+            "25-8",
+            "26-8",
+            "26-7",
+            "25-7",
+            "25-6",
+            "26-6",
+            "27-6",
+            "28-6",
+            "29-6",
+            "30-6",
+            "31-6",
+            "31-7",
+            "32-7",
+            "33-7",
+            "34-7",
+            "34-6",
+            "33-6"
+        ],
+        "active": false,
+        "text": null
+    },
+    "32-11": {
+        "targets": [
+            "32-12"
+        ],
+        "active": false,
+        "text": null
+    },
+    "32-12": {
+        "targets": [
+            "32-15",
+            "33-15",
+            "34-15",
+            "35-15",
+            "35-16",
+            "36-16",
+            "37-16",
+            "37-15",
+            "38-15",
+            "39-15",
+            "40-15",
+            "40-14",
+            "40-13",
+            "40-12",
+            "39-12",
+            "39-13",
+            "38-13",
+            "37-13",
+            "36-13",
+            "35-13",
+            "34-13",
+            "34-12",
+            "33-12"
+        ],
+        "active": false,
+        "text": null
+    },
+    "33-12": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "34-12": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "39-12": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "40-12": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "34-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "35-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "36-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "38-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "39-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "40-13": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-14": {
+        "targets": null,
+        "active": false,
+        "text": "5xN 8xE 2xS 8xW"
+    },
+    "40-14": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "33-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "34-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "35-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "38-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "39-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "40-15": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "32-16": {
+        "targets": [
+            "32-15",
+            "33-15",
+            "34-15",
+            "35-15",
+            "35-16",
+            "36-16",
+            "37-16",
+            "37-15",
+            "38-15",
+            "39-15",
+            "40-15",
+            "40-14",
+            "40-13",
+            "40-12",
+            "39-12",
+            "39-13",
+            "38-13",
+            "37-13",
+            "36-13",
+            "35-13",
+            "34-13",
+            "34-12",
+            "33-12"
+        ],
+        "active": false,
+        "text": null
+    },
+    "35-16": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "36-16": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-16": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "33-17": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Wayfinding"
+    },
+    "5-19": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-19": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-19": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "31-19": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Strength"
+    },
+    "37-20": {
+        "targets": [
+            "38-22",
+            "38-23",
+            "38-24",
+            "39-22",
+            "39-23",
+            "39-24",
+            "40-22",
+            "40-23",
+            "40-24",
+            "43-22",
+            "43-23",
+            "43-24",
+            "44-24",
+            "45-24",
+            "48-22",
+            "48-24",
+            "49-23",
+            "50-22",
+            "50-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "5-21": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-21": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "9-21": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-21": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-21": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "33-22": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Wit"
+    },
+    "5-23": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-23": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "9-23": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-23": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-23": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "24-23": {
+        "targets": [
+            "24-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "25-23": {
+        "targets": [
+            "25-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "26-23": {
+        "targets": [
+            "26-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "27-23": {
+        "targets": [
+            "27-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "28-23": {
+        "targets": [
+            "28-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "29-23": {
+        "targets": [
+            "29-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "30-23": {
+        "targets": [
+            "30-25"
+        ],
+        "active": false,
+        "text": null
+    },
+    "5-25": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-25": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "9-25": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-25": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-25": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "24-25": {
+        "targets": [
+            "24-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "25-25": {
+        "targets": [
+            "25-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "26-25": {
+        "targets": [
+            "26-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "27-25": {
+        "targets": [
+            "27-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "28-25": {
+        "targets": [
+            "28-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "29-25": {
+        "targets": [
+            "29-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "30-25": {
+        "targets": [
+            "30-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "5-27": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-27": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "9-27": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-27": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-27": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "25-27": {
+        "targets": [
+            "25-26",
+            "26-27",
+            "25-28",
+            "24-27"
+        ],
+        "active": false,
+        "text": null
+    },
+    "29-27": {
+        "targets": [
+            "29-26",
+            "30-27",
+            "29-28",
+            "28-27"
+        ],
+        "active": false,
+        "text": null
+    },
+    "38-28": {
+        "targets": [
+            "38-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-28": {
+        "targets": [
+            "39-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "40-28": {
+        "targets": [
+            "40-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-28": {
+        "targets": [
+            "43-23",
+            "43-24",
+            "44-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "44-28": {
+        "targets": [
+            "43-24",
+            "44-24",
+            "45-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-28": {
+        "targets": [
+            "44-24",
+            "45-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-28": {
+        "targets": [
+            "48-24",
+            "50-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "5-29": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "7-29": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "9-29": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "14-29": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-29": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "38-29": {
+        "targets": [
+            "38-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-29": {
+        "targets": [
+            "39-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "40-29": {
+        "targets": [
+            "40-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-29": {
+        "targets": [
+            "43-22",
+            "43-23",
+            "43-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "48-29": {
+        "targets": [
+            "48-22",
+            "48-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "50-29": {
+        "targets": [
+            "50-22",
+            "50-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "38-30": {
+        "targets": [
+            "38-22"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-30": {
+        "targets": [
+            "38-22"
+        ],
+        "active": false,
+        "text": null
+    },
+    "40-30": {
+        "targets": [
+            "38-22"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-30": {
+        "targets": [
+            "43-22",
+            "43-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-30": {
+        "targets": [
+            "48-22",
+            "50-22"
+        ],
+        "active": false,
+        "text": null
+    },
+    "9-31": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "19-31": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "22-33": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Pain"
+    },
+    "58-34": {
+        "targets": null,
+        "active": false,
+        "text": "Congratulations you have reached the end. Thanks for playing, hope you had fun!"
+    },
+    "12-35": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Compliance"
+    },
+    "52-35": {
+        "targets": null,
+        "active": false,
+        "text": "Trial of Judgement"
+    },
+    "3-36": {
+        "targets": null,
+        "active": false,
+        "text": "ton toe gou na pey"
+    },
+    "8-36": {
+        "targets": null,
+        "active": false,
+        "text": "vis laa zwu jf"
+    },
+    "37-36": {
+        "targets": [
+            "42-37"
+        ],
+        "active": false,
+        "text": null
+    },
+    "38-36": {
+        "targets": null,
+        "active": false,
+        "text": "It takes far more strength to forgive one than to convict them"
+    },
+    "39-36": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-36": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "42-36": {
+        "targets": null,
+        "active": false,
+        "text": "The strong must cut off the weak to realize their potential"
+    },
+    "43-36": {
+        "targets": [
+            "46-37"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-36": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "46-36": {
+        "targets": null,
+        "active": false,
+        "text": "All things will face me in the end"
+    },
+    "47-36": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-36": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "50-36": {
+        "targets": null,
+        "active": false,
+        "text": "Getting back up after falling, too stubborn to give up"
+    },
+    "51-36": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "47-38": {
+        "targets": [
+            "50-37"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-38": {
+        "targets": [
+            "38-41"
+        ],
+        "active": false,
+        "text": null
+    },
+    "51-38": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "53-38": {
+        "targets": [
+            "38-37"
+        ],
+        "active": false,
+        "text": null
+    },
+    "37-40": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "38-40": {
+        "targets": null,
+        "active": false,
+        "text": "They will fall in line or the will fall"
+    },
+    "39-40": {
+        "targets": [
+            "42-41"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-40": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "42-40": {
+        "targets": null,
+        "active": false,
+        "text": "They run, they hide, they shout, they beg, they pray... until the very end"
+    },
+    "43-40": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-40": {
+        "targets": [
+            "50-41"
+        ],
+        "active": false,
+        "text": null
+    },
+    "46-40": {
+        "targets": null,
+        "active": false,
+        "text": "The road to redemption is long but never too long"
+    },
+    "47-40": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-40": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "50-40": {
+        "targets": null,
+        "active": false,
+        "text": "Thieves, murderers, lovers, children... I won't be denied"
+    },
+    "51-40": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-42": {
+        "targets": [
+            "46-41"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "47-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-42": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "51-42": {
+        "targets": [
+            "38-45"
+        ],
+        "active": false,
+        "text": null
+    },
+    "37-44": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "38-44": {
+        "targets": null,
+        "active": false,
+        "text": "Tell me all the wrongs I have committed and I will tell you the price of greatness"
+    },
+    "39-44": {
+        "targets": [
+            "42-45"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-44": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "42-44": {
+        "targets": null,
+        "active": false,
+        "text": "My greed knows no limits"
+    },
+    "43-44": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-44": {
+        "targets": [
+            "50-45"
+        ],
+        "active": false,
+        "text": null
+    },
+    "46-44": {
+        "targets": null,
+        "active": false,
+        "text": "Some strive to be good but forget to be better"
+    },
+    "47-44": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-44": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "50-44": {
+        "targets": null,
+        "active": false,
+        "text": "We all have two lives, the first starts when we are born and the second starts when we realize we only have one life"
+    },
+    "51-44": {
+        "targets": null,
+        "active": false,
+        "text": null
+    },
+    "37-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "39-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-46": {
+        "targets": [
+            "46-45"
+        ],
+        "active": false,
+        "text": null
+    },
+    "43-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "45-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "47-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "49-46": {
+        "targets": [
+            "37-49"
+        ],
+        "active": false,
+        "text": null
+    },
+    "51-46": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "41-49": {
+        "targets": [
+            "53-36"
+        ],
+        "active": false,
+        "text": null
+    },
+    "31-56": {
+        "targets": null,
+        "active": false,
+        "text": "Trail of Mind"
+    },
+    "6-59": {
+        "targets": null,
+        "active": false,
+        "text": "k sy z ge dae fa gp"
+    }
+}
