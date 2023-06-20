@@ -3,6 +3,8 @@ public abstract class Trap : Tile, IOnEnter
 {
 	static Trap()
 	{
+		Tiles.ConfigTile(TileType.VisibleSpikes, new VisibleSpikes());
+		Tiles.ConfigTile(TileType.VisibleFire, new VisibleFire());
 		Tiles.ConfigTile(TileType.Spikes, new Spikes());
 		Tiles.ConfigTile(TileType.FirePlate, new FirePlate());
 		Tiles.ConfigTile(TileType.Pit, new Pit());
@@ -12,6 +14,42 @@ public abstract class Trap : Tile, IOnEnter
 	public static void Init() { }
 
 	public abstract ActResult OnEnter(Vector2 pos, Player player, Map map);
+}
+public sealed class VisibleSpikes : Trap
+{
+	public VisibleSpikes()
+	{
+		Name = "Spikes";
+		Description = "Spikes shooting out of the ground";
+		DetailedDescription = "Spikes shooting out of the ground, best not to step on them";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.Danger;
+	}
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth -= 1;
+		return new GeneralResult("You stand on spikes and hurt yourself");
+	}
+}
+public sealed class VisibleFire : Trap
+{
+	public VisibleFire()
+	{
+		Name = "Fire";
+		Description = "A burst of first erupts from the ground";
+		DetailedDescription = "A burst of first erupts from the ground, don't get burnt";
+		Walkable = true;
+		BlocksVision = false;
+		TileKind = TileKind.Danger;
+	}
+
+	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth -= 2;
+		return new GeneralResult("The fire engulfs you and leaves you scorched");
+	}
 }
 public sealed class Spikes : Trap
 {

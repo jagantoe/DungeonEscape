@@ -42,6 +42,11 @@ public class GameState
 	{
 		Processing = true;
 		RoundReset();
+		foreach (var tile in Map.TurnStartTiles)
+		{
+			var target = Map[tile] as ITurnStart;
+			target?.TurnStart(tile, Map);
+		}
 		var actions = GetPlayerActionsInOrder();
 		foreach (var action in actions)
 		{
@@ -122,7 +127,7 @@ public class GameState
 				if (Vision.GetVisionGrid(1).Select(x => x + player.Position).Contains(target))
 				{
 					var targetTile = Map[target];
-					var inspection = targetTile.Inspect(player.Character == PlayerCharacter.Archeologist);
+					var inspection = targetTile.Inspect(player.Character == PlayerCharacter.Archeologist, target, Map);
 					PlayerInspections.Add(new PlayerInspection { PlayerId = player.Id, Inspection = inspection });
 					actionResults.Enqueue(new SuccessResult($"Name: {inspection.Name} - Description: {inspection.Description}"));
 				}

@@ -1,4 +1,4 @@
-﻿namespace DungeonEscape.Logic;
+namespace DungeonEscape.Logic;
 
 public enum TileType
 {
@@ -20,6 +20,7 @@ public enum TileType
 	TileSwitcherLever = 13,
 	TileToggleChecker = 14,
 	LeapLedge = 15,
+	CleansingPool = 16,
 
 
 	// Walls
@@ -29,14 +30,21 @@ public enum TileType
 	IllusionWall = 23,
 	SecretWall = 24,
 	InvisibleWall = 25,
-	WallCycler = 26,
 
-	//Traps
+	// Traps
+	VisibleSpikes = 28,
+	VisibleFire = 29,
 	Spikes = 30,
 	FirePlate = 31,
 	Pit = 32,
 	FalseFloor = 33,
 	FireWall = 34,
+
+	// Automation
+	WallMover = 40,
+	FloorMover = 41,
+	SpikeMover = 42,
+	FireMover = 43,
 
 	// Item Pickups
 	Pickaxe = 80,

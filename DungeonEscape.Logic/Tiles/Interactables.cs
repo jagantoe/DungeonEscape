@@ -65,3 +65,21 @@ public sealed class TileSwitcherLever : Lever
 		return new SuccessResult("You pull the lever and hear some gears turning");
 	}
 }
+public sealed class CleansingPool : Tile, IInteract
+{
+	public CleansingPool()
+	{
+		Name = $"Cleansing pool";
+		Description = $"A pool of water";
+		DetailedDescription = $"A pool of water, it has a sweet scent";
+		Walkable = false;
+		BlocksVision = false;
+		TileKind = TileKind.PointOfInterest;
+	}
+
+	public ActResult Interact(Vector2 pos, Player player, Map map)
+	{
+		player.CurrentHealth = player.MaxHealth;
+		return new SuccessResult("As you drink from the pool you feel revitalized");
+	}
+}
