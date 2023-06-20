@@ -17,8 +17,7 @@ public class Player
 		var baseHealth = Character switch
 		{
 			PlayerCharacter.StrongMan => 15,
-			PlayerCharacter.Explorer => 10,
-			PlayerCharacter.Archeologist => 5,
+			PlayerCharacter.Archeologist => 10,
 			_ => 10
 		};
 		var health = baseHealth - Resets;
@@ -28,7 +27,7 @@ public class Player
 
 	public int GetVisionRange()
 	{
-		var vision = Character == PlayerCharacter.Explorer ? 2 : 1;
+		var vision = 2;
 		if (Items.Contains(Item.Lantern)) vision++;
 
 		return vision;
@@ -50,6 +49,5 @@ public class Player
 public enum PlayerCharacter
 {
 	StrongMan = 0,
-	Explorer = 1,
-	Archeologist = 2
+	Archeologist = 1
 }

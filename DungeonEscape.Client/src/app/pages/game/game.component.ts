@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
-import { combineLatest, debounceTime, distinctUntilChanged, firstValueFrom, map, Observable, Subject, tap } from 'rxjs';
+import { Observable, Subject, combineLatest, debounceTime, distinctUntilChanged, firstValueFrom, map, tap } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard.service';
 import { GameService } from 'src/app/game.service';
 import { Character } from 'src/app/types/character';
@@ -63,8 +63,10 @@ export class GameComponent {
         return "bg-gray-400";
       case TileKind.PointOfInterest:
         return "bg-green-500";
+      case TileKind.Danger:
+        return "bg-red-500";
       default:
-        return "bg-gray-800"
+        return "bg-gray-800";
     }
   }
 

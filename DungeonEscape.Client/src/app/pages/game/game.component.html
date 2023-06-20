@@ -46,11 +46,6 @@
                         Strongman
                     </button>
                     <button class="rounded-full shadow-lg px-3"
-                        [ngClass]="player.character == Character.Explorer ? 'bg-green-300': 'bg-blue-300'"
-                        (click)="switchCharacter(Character.Explorer)">
-                        Explorer
-                    </button>
-                    <button class="rounded-full shadow-lg px-3"
                         [ngClass]="player.character == Character.Archeologist ? 'bg-green-300': 'bg-blue-300'"
                         (click)="switchCharacter(Character.Archeologist)">
                         Archeologist
@@ -82,6 +77,6 @@
 
 <!-- Classes so tailwind can detect them 
 <div
-    class="hidden row-start-1 row-start-2 row-start-3 row-start-4 row-start-5 row-start-6 row-start-7 col-start-1 col-start-2 col-start-3 col-start-4 col-start-5 col-start-6 col-start-7 bg-gray-400 bg-gray-800 bg-green-500  ">
+    class="hidden row-start-1 row-start-2 row-start-3 row-start-4 row-start-5 row-start-6 row-start-7 col-start-1 col-start-2 col-start-3 col-start-4 col-start-5 col-start-6 col-start-7 bg-gray-400 bg-gray-800 bg-green-500 bg-red-500">
 </div>
 -->

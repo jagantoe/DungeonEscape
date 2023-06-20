@@ -12,4 +12,8 @@
     <PackageReference Include="StackExchange.Redis" Version="2.6.90" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonEscape.Models\DungeonEscape.Models.csproj" />
+  </ItemGroup>
+
 </Project>
