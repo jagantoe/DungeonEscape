@@ -62,7 +62,7 @@ public class Teleporter : TileWithConfig, IOnEnter
 		return new GeneralResult("With a flash and a poof you find yourself somewhere new");
 	}
 }
-public class LeapLedge : TileWithConfig, IOnEnter
+public class LeapLedge : TileWithConfig, IInteract
 {
 	public LeapLedge()
 	{
@@ -74,7 +74,7 @@ public class LeapLedge : TileWithConfig, IOnEnter
 		TileKind = TileKind.Walkable;
 	}
 
-	public ActResult OnEnter(Vector2 pos, Player player, Map map)
+	public ActResult Interact(Vector2 pos, Player player, Map map)
 	{
 		if (player.Character is PlayerCharacter.StrongMan)
 		{

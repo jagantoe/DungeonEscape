@@ -386,18 +386,59 @@
         "active": false,
         "text": "Trial of Wayfinding"
     },
+    "6-18": {
+        "targets": [
+            "7-20",
+            "6-20"
+        ],
+        "active": false,
+        "text": null
+    },
+    "7-18": {
+        "targets": [
+            "6-21",
+            "5-21"
+        ],
+        "active": false,
+        "text": null
+    },
     "5-19": {
-        "targets": null,
+        "targets": [
+            "5-22",
+            "5-23"
+        ],
+        "active": false,
+        "text": null
+    },
+    "6-19": {
+        "targets": [
+            "7-22",
+            "7-23"
+        ],
         "active": false,
         "text": null
     },
     "7-19": {
-        "targets": null,
+        "targets": [
+            "6-23",
+            "6-24"
+        ],
         "active": false,
         "text": null
     },
     "14-19": {
-        "targets": null,
+        "targets": [
+            "14-20",
+            "15-20",
+            "16-20",
+            "17-20",
+            "17-21",
+            "17-22",
+            "16-22",
+            "15-22",
+            "14-22",
+            "14-21"
+        ],
         "active": false,
         "text": null
     },
@@ -431,28 +472,42 @@
         "active": false,
         "text": null
     },
-    "5-21": {
-        "targets": null,
+    "9-19": {
+        "targets": [
+            "9-20",
+            "10-21",
+            "9-22",
+            "10-23",
+            "9-24",
+            "10-23",
+            "9-22",
+            "10-21"
+        ],
         "active": false,
         "text": null
     },
-    "7-21": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "9-21": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "14-21": {
-        "targets": null,
+    "15-19": {
+        "targets": [
+            "15-21",
+            "16-21",
+            "16-23",
+            "15-23"
+        ],
         "active": false,
         "text": null
     },
     "19-21": {
-        "targets": null,
+        "targets": [
+            "19-20",
+            "20-20",
+            "21-20",
+            "22-20",
+            "22-21",
+            "22-22",
+            "21-22",
+            "20-22",
+            "19-22"
+        ],
         "active": false,
         "text": null
     },
@@ -461,28 +516,131 @@
         "active": false,
         "text": "Trial of Wit"
     },
-    "5-23": {
-        "targets": null,
+    "10-19": {
+        "targets": [
+            "10-24",
+            "9-23",
+            "10-22",
+            "9-21",
+            "10-20",
+            "9-21",
+            "10-22",
+            "9-23"
+        ],
         "active": false,
         "text": null
     },
-    "7-23": {
-        "targets": null,
+    "11-19": {
+        "targets": [
+            "11-24",
+            "12-23",
+            "11-22",
+            "12-21",
+            "11-20",
+            "12-21",
+            "11-22",
+            "12-23"
+        ],
         "active": false,
         "text": null
     },
-    "9-23": {
-        "targets": null,
+    "12-19": {
+        "targets": [
+            "12-20",
+            "11-21",
+            "12-22",
+            "11-23",
+            "12-24",
+            "11-23",
+            "12-22",
+            "11-21"
+        ],
         "active": false,
         "text": null
     },
-    "14-23": {
-        "targets": null,
+    "9-18": {
+        "targets": [
+            "10-23",
+            "9-22",
+            "10-21",
+            "9-20",
+            "10-21",
+            "9-22",
+            "10-23",
+            "9-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "10-18": {
+        "targets": [
+            "9-21",
+            "10-22",
+            "9-23",
+            "10-24",
+            "9-23",
+            "10-22",
+            "9-21",
+            "10-20"
+        ],
+        "active": false,
+        "text": null
+    },
+    "11-18": {
+        "targets": [
+            "12-21",
+            "11-22",
+            "12-23",
+            "11-24",
+            "12-23",
+            "11-22",
+            "12-21",
+            "11-20"
+        ],
+        "active": false,
+        "text": null
+    },
+    "12-18": {
+        "targets": [
+            "11-23",
+            "12-22",
+            "11-21",
+            "12-20",
+            "11-21",
+            "12-22",
+            "11-23",
+            "12-24"
+        ],
+        "active": false,
+        "text": null
+    },
+    "16-19": {
+        "targets": [
+            "17-24",
+            "16-24",
+            "15-24",
+            "24-24",
+            "14-23",
+            "14-22",
+            "15-22",
+            "16-22",
+            "17-22",
+            "17-23"
+        ],
         "active": false,
         "text": null
     },
     "19-23": {
-        "targets": null,
+        "targets": [
+            "19-22",
+            "22-22",
+            "19-22",
+            "22-22",
+            "20-22",
+            "21-22",
+            "20-22",
+            "21-22"
+        ],
         "active": false,
         "text": null
     },
@@ -535,28 +693,39 @@
         "active": false,
         "text": null
     },
-    "5-25": {
-        "targets": null,
+    "12-31": {
+        "targets": [
+            "12-27",
+            "12-26",
+            "12-27",
+            "12-28",
+            "12-29",
+            "12-30",
+            "12-29",
+            "12-28"
+        ],
         "active": false,
         "text": null
     },
-    "7-25": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "9-25": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "14-25": {
-        "targets": null,
+    "15-31": {
+        "targets": [
+            "15-27",
+            "15-28",
+            "15-29",
+            "16-29",
+            "16-28",
+            "16-27"
+        ],
         "active": false,
         "text": null
     },
     "19-25": {
-        "targets": null,
+        "targets": [
+            "19-24",
+            "22-24",
+            "20-24",
+            "21-24"
+        ],
         "active": false,
         "text": null
     },
@@ -609,28 +778,51 @@
         "active": false,
         "text": null
     },
-    "5-27": {
-        "targets": null,
+    "11-31": {
+        "targets": [
+            "11-28",
+            "11-27",
+            "11-26",
+            "11-27",
+            "11-28",
+            "11-29",
+            "11-30",
+            "11-29"
+        ],
         "active": false,
         "text": null
     },
-    "7-27": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "9-27": {
-        "targets": null,
-        "active": false,
-        "text": null
-    },
-    "14-27": {
-        "targets": null,
+    "16-31": {
+        "targets": [
+            "14-26",
+            "15-26",
+            "16-26",
+            "17-26",
+            "17-27",
+            "17-28",
+            "17-29",
+            "17-30",
+            "16-30",
+            "15-30",
+            "14-30",
+            "14-29",
+            "14-28",
+            "14-27",
+            "14-26"
+        ],
         "active": false,
         "text": null
     },
     "19-27": {
-        "targets": null,
+        "targets": [
+            "19-26",
+            "20-26",
+            "21-26",
+            "22-26",
+            "19-26",
+            "20-26",
+            "21-26"
+        ],
         "active": false,
         "text": null
     },
@@ -709,28 +901,101 @@
         "active": false,
         "text": null
     },
-    "5-29": {
-        "targets": null,
+    "5-30": {
+        "targets": [
+            "6-25",
+            "5-25"
+        ],
         "active": false,
         "text": null
     },
-    "7-29": {
-        "targets": null,
+    "6-30": {
+        "targets": [
+            "5-26",
+            "6-26"
+        ],
         "active": false,
         "text": null
     },
-    "9-29": {
-        "targets": null,
+    "7-30": {
+        "targets": [
+            "7-26",
+            "7-27"
+        ],
         "active": false,
         "text": null
     },
-    "14-29": {
-        "targets": null,
+    "5-31": {
+        "targets": [
+            "5-27",
+            "5-28"
+        ],
+        "active": false,
+        "text": null
+    },
+    "6-31": {
+        "targets": [
+            "6-28",
+            "7-28"
+        ],
+        "active": false,
+        "text": null
+    },
+    "7-31": {
+        "targets": [
+            "5-29",
+            "7-29"
+        ],
+        "active": false,
+        "text": null
+    },
+    "10-31": {
+        "targets": [
+            "10-29",
+            "10-28",
+            "10-27",
+            "10-26",
+            "10-27",
+            "10-28",
+            "10-29",
+            "10-30"
+        ],
+        "active": false,
+        "text": null
+    },
+    "17-31": {
+        "targets": [
+            "14-26",
+            "15-26",
+            "16-26",
+            "17-26",
+            "14-27",
+            "15-27",
+            "16-27",
+            "17-27",
+            "14-28",
+            "15-28",
+            "16-28",
+            "17-28",
+            "14-29",
+            "15-29",
+            "16-29",
+            "17-29",
+            "14-30",
+            "15-30",
+            "16-30",
+            "17-30"
+        ],
         "active": false,
         "text": null
     },
     "19-29": {
-        "targets": null,
+        "targets": [
+            "22-28",
+            "21-28",
+            "20-28",
+            "19-28"
+        ],
         "active": false,
         "text": null
     },
@@ -818,12 +1083,26 @@
         "text": null
     },
     "9-31": {
-        "targets": null,
+        "targets": [
+            "9-30",
+            "9-29",
+            "9-28",
+            "9-27",
+            "9-26",
+            "9-27",
+            "9-28",
+            "9-29"
+        ],
         "active": false,
         "text": null
     },
     "19-31": {
-        "targets": null,
+        "targets": [
+            "19-30",
+            "20-30",
+            "21-30",
+            "22-30"
+        ],
         "active": false,
         "text": null
     },
