@@ -64,6 +64,9 @@ public class GameState
 			// Execute action
 			switch (action)
 			{
+				case StandingAction:
+					Stand();
+					break;
 				case MoveAction a:
 					Move(a.Target);
 					break;
@@ -90,8 +93,19 @@ public class GameState
 				actionResults.Enqueue(new DeathResult(Quotes.GetDeathQuote()));
 			}
 			// Add action results 
-			PlayerActionResults.Add(new PlayerActionResultDTO { Round = CurrentRound, PlayerId = player.Id, ActionResults = actionResults });
-
+			if (action is not StandingAction || action is StandingAction && actionResults.Count > 1)
+			{
+				PlayerActionResults.Add(new PlayerActionResultDTO { Round = CurrentRound, PlayerId = player.Id, ActionResults = actionResults });
+			}
+			void Stand()
+			{
+				var targetTile = Map[player.Position];
+				if (targetTile.IsType<IOnEnter>(out var tile))
+				{
+					var result = tile.OnEnter(player.Position, player, Map);
+					actionResults.Enqueue(result);
+				}
+			}
 			void Move(Vector2 target)
 			{
 				if (player.Position == target)
@@ -216,7 +230,7 @@ public class GameState
 	private List<PlayerAction> GetPlayerActionsInOrder()
 	{
 		var actions = PlayerActions.Values.OrderBy(x => x.Item2).Select(x => x.Item1).ToList();
-		PlayerActions.Clear();
+		PlayerActions = actions.ToDictionary(x => x.PlayerId, x => (new StandingAction(x.PlayerId) as PlayerAction, DateTime.Now));
 		return actions;
 	}
 	public void AddPlayerAction(PlayerAction action)

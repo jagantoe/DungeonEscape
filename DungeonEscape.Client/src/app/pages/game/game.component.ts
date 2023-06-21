@@ -130,7 +130,7 @@ export class GameComponent {
         case "KeyF":
           this.inspect();
           break;
-        case "KeyJ":
+        case "KeyI":
           this.interact();
           break;
         default:

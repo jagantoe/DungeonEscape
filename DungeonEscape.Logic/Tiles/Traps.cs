@@ -29,7 +29,7 @@ public sealed class VisibleSpikes : Trap
 
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
-		player.CurrentHealth -= 1;
+		player.CurrentHealth -= 3;
 		return new GeneralResult("You stand on spikes and hurt yourself");
 	}
 }
@@ -47,7 +47,7 @@ public sealed class VisibleFire : Trap
 
 	public override ActResult OnEnter(Vector2 pos, Player player, Map map)
 	{
-		player.CurrentHealth -= 2;
+		player.CurrentHealth -= 4;
 		return new GeneralResult("The fire engulfs you and leaves you scorched");
 	}
 }
