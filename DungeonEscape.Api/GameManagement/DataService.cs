@@ -104,7 +104,7 @@ public class DataService
 		if (game is null) return "Game not found";
 		_memoryCache.Remove(GAME_CACHE + id);
 		GetLoadedGames().Remove(id);
-		return "Game loaded successfully";
+		return "Game unloaded successfully";
 	}
 
 	private HashSet<int> GetLoadedGames()

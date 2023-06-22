@@ -26,6 +26,10 @@ public interface IOnEnter
 {
     ActResult OnEnter(Vector2 pos, Player player, Map map);
 }
+public interface IStanding : IOnEnter
+{
+
+}
 public interface IInteract
 {
     ActResult Interact(Vector2 pos, Player player, Map map);

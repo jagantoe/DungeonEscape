@@ -119,6 +119,18 @@ public class AdminController : Controller
 		if (game is not null) game.Active = active;
 		return Ok(game?.Active);
 	}
+	[HttpPost]
+	public IActionResult TeleportPlayer([FromQuery] string adminPassword, [FromQuery] int gameId, [FromQuery] int playerId, [FromQuery] string pos)
+	{
+		if (adminPassword != AdminPassword) return Unauthorized();
+		var game = _dataService.GetGame(gameId);
+		if (game is null) return Ok("Game not found");
+		var player = game.Players.FirstOrDefault(x => x.Id == playerId);
+		if (player is null) return Ok("Player not found");
+		var loc = pos.Adapt<Vector2>();
+		player.Position = loc;
+		return Ok("Teleported player");
+	}
 
 	// Cache
 	[HttpPost]

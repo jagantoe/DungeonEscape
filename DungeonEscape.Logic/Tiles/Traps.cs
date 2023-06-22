@@ -15,7 +15,7 @@ public abstract class Trap : Tile, IOnEnter
 
 	public abstract ActResult OnEnter(Vector2 pos, Player player, Map map);
 }
-public sealed class VisibleSpikes : Trap
+public sealed class VisibleSpikes : Trap, IStanding
 {
 	public VisibleSpikes()
 	{
@@ -33,7 +33,7 @@ public sealed class VisibleSpikes : Trap
 		return new GeneralResult("You stand on spikes and hurt yourself");
 	}
 }
-public sealed class VisibleFire : Trap
+public sealed class VisibleFire : Trap, IStanding
 {
 	public VisibleFire()
 	{
@@ -87,7 +87,7 @@ public sealed class FirePlate : Trap
 		return new GeneralResult("Fire bursts from the ground");
 	}
 }
-public sealed class Pit : Trap
+public sealed class Pit : Trap, IStanding
 {
 	public Pit()
 	{

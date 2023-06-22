@@ -100,7 +100,7 @@ public class GameState
 			void Stand()
 			{
 				var targetTile = Map[player.Position];
-				if (targetTile.IsType<IOnEnter>(out var tile))
+				if (targetTile.IsType<IStanding>(out var tile))
 				{
 					var result = tile.OnEnter(player.Position, player, Map);
 					actionResults.Enqueue(result);
