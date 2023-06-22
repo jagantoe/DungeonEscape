@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
-import { Observable, Subject, combineLatest, debounceTime, distinctUntilChanged, firstValueFrom, map, tap } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
+import { Observable, Subject, combineLatest, debounceTime, distinctUntilChanged, firstValueFrom, map, tap, timer } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard.service';
 import { GameService } from 'src/app/game.service';
 import { Character } from 'src/app/types/character';
@@ -26,12 +26,13 @@ export class GameComponent {
   inspection$: Observable<Inspection>;
   results$: Observable<PlayerActionResult[]>;
   connected$: Observable<boolean>;
-  constructor(private gameService: GameService, private dashboardService: DashboardService) {
+  constructor(private gameService: GameService, private dashboardService: DashboardService, private cdk: ChangeDetectorRef) {
     this.player$ = gameService.player$;
     this.vision$ = gameService.gameState$.pipe(
       distinctUntilChanged((a, b) => JSON.stringify(a) == JSON.stringify(b)),
       map(x => this.mapDisplayTiles(x)),
     );
+    timer(1000, 500).pipe(tap(x => this.cdk.detectChanges())).subscribe();
     this.inspection$ = gameService.inspection$;
     this.results$ = dashboardService.results$;
     this.connected$ = combineLatest([gameService.connected$, dashboardService.connected$]).pipe(
