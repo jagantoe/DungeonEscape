@@ -28,7 +28,7 @@ var webSocket = new HubConnectionBuilder()
 webSocket.On<GameState>("NewRound", async response =>
 {
 	player = response.Player;
-	vision = response.VisionTiles;
+	vision = response.Vision;
 	await RoundLogic();
 });
 
