@@ -2,5 +2,5 @@
 public class GameState
 {
 	public Player Player { get; set; }
-	public List<Tile> VisionTiles { get; set; }
+	public List<Tile> Vision { get; set; }
 }
